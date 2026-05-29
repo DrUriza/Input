@@ -1,0 +1,10 @@
+{
+  "python.defaultInterpreterPath": "C:\\Users\\uif29729\\AppData\\Local\\anaconda3\\python.exe",
+  "python.analysis.extraPaths": [
+    "./src",
+    "../Signal_Freq_Analysis/src"
+  ],
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingModuleSource": "none"
+  }
+}
