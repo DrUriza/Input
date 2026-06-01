@@ -1,3 +1,42 @@
+🧱 1. Market RAW STRUCTURAL DATA
+Datos objetivos del mercado:
+
+OHLC
+Open Interest OHLC
+Funding OHLC
+Volume (cuando lo agregues)
+
+👉 Características:
+
+time series limpia
+sin interpretación
+base para cálculos
+
+
+🧱 2. Microstructure / Orderflow
+Más profundo:
+
+Liquidations
+Orderbook snapshots (L2/L3)
+Trade flow
+Agg flow
+
+👉 Características:
+
+alta frecuencia
+requiere agregación
+se usa para derivar señales
+
+
+🧱 3. Derived Indicators (⚠️ aquí está el riesgo)
+Ejemplos que mencionas:
+
+Long/Short ratio
+Whale activity
+Large transactions
+CDV (si viene calculado)
+Exchange inflow/outflow
+
 # Project Template
 Reusable base architecture for building modular technical systems such as robotics, automation, trading, sensor processing, and advanced analytics pipelines.
 ---
