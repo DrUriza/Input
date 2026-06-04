@@ -9,7 +9,7 @@ description = "Base template for modular technical projects."
 readme = "README.md"
 requires-python = ">=3.10"
 
-dependencies = ["numpy>=1.24"]
+dependencies = ["numpy>=1.24", "requests>=2.31"]
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]
 
@@ -18,4 +18,9 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["project_template*"]
+include = ["input*"]
+
+[tool.pytest.ini_options]
+markers = [
+	"integration: marks tests that hit external providers and are disabled by default",
+]
