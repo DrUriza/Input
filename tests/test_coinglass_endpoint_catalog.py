@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib
 import json
 import sys
 from pathlib import Path
@@ -9,328 +10,109 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import pytest
 
-from input.input.coinglass.coinglass_client import CoinGlassClient
-from input.input.coinglass.coinglass_endpoints import CoinGlassEndpointCatalog, EndpointContract
-from input.input.coinglass.coinglass_models import CoinGlassRequest
-from input.input.cryptoquant.errors import InputValidationError
-from input.input.cryptoquant.schemas import RawInputPayload, SourceRequest, SourceStatus
+from input.main.pipeline import Pipeline
+from input.processing.raw_response_contracts import EndpointMetadata, RawResponseContract
 
 
-def write_catalog(tmp_path: Path, payload: dict[str, Any]) -> Path:
-    path = tmp_path / "Coinglass_Endpoint.json"
-    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    return path
+ROOT = Path(__file__).resolve().parents[1]
+ENDPOINTS_PATH = ROOT / "src" / "input" / "config" / "End_Points.json"
 
 
-class DummyResponse:
-    def __init__(self, *, ok: bool = True, status_code: int = 200, payload: Any = None, text: str = "") -> None:
-        self.ok = ok
-        self.status_code = status_code
-        self._payload = payload if payload is not None else {"data": []}
-        self.text = text
-
-    def json(self) -> Any:
-        return self._payload
+def _load_registry_payload() -> dict[str, Any]:
+    return json.loads(ENDPOINTS_PATH.read_text(encoding="utf-8"))
 
 
-class StubCatalog:
-    def __init__(self, contract: EndpointContract, url: str, *, fail_contract_lookup: bool = False) -> None:
-        self.contract = contract
-        self.url = url
-        self.base_url = "https://stub.coinglass.local"
-        self.fail_contract_lookup = fail_contract_lookup
-        self.require_contract_calls: list[str] = []
-        self.require_url_calls: list[str] = []
-
-    def require_contract(self, endpoint_key: str) -> EndpointContract:
-        self.require_contract_calls.append(endpoint_key)
-        if self.fail_contract_lookup:
-            raise KeyError(endpoint_key)
-        return self.contract
-
-    def require_url(self, endpoint_key: str) -> str:
-        self.require_url_calls.append(endpoint_key)
-        return self.url
+def _iter_endpoint_entries(payload: dict[str, Any]):
+    for priority in payload.get("priorities", {}).values():
+        if not isinstance(priority, dict):
+            continue
+        for family_entries in priority.values():
+            if not isinstance(family_entries, list):
+                continue
+            for entry in family_entries:
+                if isinstance(entry, dict):
+                    yield entry
 
 
-def test_catalog_loads_default_json() -> None:
-    catalog = CoinGlassEndpointCatalog()
-
-    contract = catalog.require_contract("futures_orderbook_large_limit_order")
-
-    assert catalog.contains("futures_orderbook_large_limit_order")
-    assert contract.priority == "P1"
-    assert contract.path.startswith("/api/")
-
-
-def test_catalog_has_p1_p2_p3() -> None:
-    catalog = CoinGlassEndpointCatalog()
-
-    summary = catalog.summary()
-
-    assert set(summary) == {"P1", "P2", "P3"}
-    assert all(count > 0 for count in summary.values())
+def _params_for(required_params: tuple[str, ...]) -> dict[str, Any]:
+    defaults: dict[str, Any] = {
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "exchange": "Binance",
+        "limit": 1,
+        "start_time": 0,
+        "end_time": 0,
+    }
+    return {param: defaults.get(param, "BTC") for param in required_params}
 
 
-def test_catalog_rejects_missing_required_fields(tmp_path: Path) -> None:
-    catalog_path = write_catalog(
-        tmp_path,
-        {
-            "P1": {
-                "missing_fields": {
-                    "path": "/api/test/path",
-                    "category": "test",
-                    "priority": "P1",
-                    "use": "test",
-                }
-            },
-            "P2": {},
-            "P3": {},
-        },
-    )
+class StubClient:
+    def __init__(self) -> None:
+        self.calls: list[tuple[EndpointMetadata, dict[str, Any]]] = []
 
-    with pytest.raises(ValueError, match="missing required fields"):
-        CoinGlassEndpointCatalog(catalog_path)
-
-
-def test_catalog_rejects_priority_mismatch(tmp_path: Path) -> None:
-    catalog_path = write_catalog(
-        tmp_path,
-        {
-            "P1": {
-                "priority_mismatch": {
-                    "path": "/api/test/path",
-                    "category": "test",
-                    "priority": "P2",
-                    "use": "test",
-                    "cache_ttl_sec": 1,
-                }
-            },
-            "P2": {},
-            "P3": {},
-        },
-    )
-
-    with pytest.raises(ValueError, match="declares 'P2'"):
-        CoinGlassEndpointCatalog(catalog_path)
-
-
-def test_catalog_rejects_duplicate_keys(tmp_path: Path) -> None:
-    catalog_path = write_catalog(
-        tmp_path,
-        {
-            "P1": {
-                "duplicate_key": {
-                    "path": "/api/test/path-1",
-                    "category": "test",
-                    "priority": "P1",
-                    "use": "test",
-                    "cache_ttl_sec": 1,
-                }
-            },
-            "P2": {
-                "duplicate_key": {
-                    "path": "/api/test/path-2",
-                    "category": "test",
-                    "priority": "P2",
-                    "use": "test",
-                    "cache_ttl_sec": 1,
-                }
-            },
-            "P3": {},
-        },
-    )
-
-    with pytest.raises(ValueError, match="Duplicated endpoint key"):
-        CoinGlassEndpointCatalog(catalog_path)
-
-
-def test_catalog_rejects_invalid_path_without_api_prefix(tmp_path: Path) -> None:
-    catalog_path = write_catalog(
-        tmp_path,
-        {
-            "P1": {
-                "invalid_path": {
-                    "path": "/v1/not-allowed",
-                    "category": "test",
-                    "priority": "P1",
-                    "use": "test",
-                    "cache_ttl_sec": 1,
-                }
-            },
-            "P2": {},
-            "P3": {},
-        },
-    )
-
-    with pytest.raises(ValueError, match="starting with /api/"):
-        CoinGlassEndpointCatalog(catalog_path)
-
-
-def test_catalog_rejects_negative_cache_ttl(tmp_path: Path) -> None:
-    catalog_path = write_catalog(
-        tmp_path,
-        {
-            "P1": {
-                "negative_ttl": {
-                    "path": "/api/test/path",
-                    "category": "test",
-                    "priority": "P1",
-                    "use": "test",
-                    "cache_ttl_sec": -1,
-                }
-            },
-            "P2": {},
-            "P3": {},
-        },
-    )
-
-    with pytest.raises(ValueError, match="cache_ttl_sec >= 0"):
-        CoinGlassEndpointCatalog(catalog_path)
-
-
-def test_require_url_uses_json_contract() -> None:
-    catalog = CoinGlassEndpointCatalog()
-
-    contract = catalog.require_contract("futures_orderbook_large_limit_order")
-    url = catalog.require_url("futures_orderbook_large_limit_order")
-
-    assert url == f"{catalog.base_url}{contract.path}"
-    assert url.endswith(contract.path)
-
-
-def test_get_by_priority_returns_only_selected_priority() -> None:
-    catalog = CoinGlassEndpointCatalog()
-
-    contracts = catalog.get_by_priority("P2")
-
-    assert contracts
-    assert all(contract.priority == "P2" for contract in contracts.values())
-    assert len(contracts) == catalog.summary()["P2"]
-
-
-def test_client_uses_catalog_require_url(monkeypatch: pytest.MonkeyPatch) -> None:
-    contract = EndpointContract(
-        key="futures_orderbook_large_limit_order",
-        path="/api/futures/orderbook/large-limit-order",
-        category="whale_orderbook",
-        priority="P1",
-        use="current_large_limit_orders_for_whale_orderbook_detection",
-        cache_ttl_sec=15,
-    )
-    stub_catalog = StubCatalog(contract=contract, url="https://stub.coinglass.local/api/futures/orderbook/large-limit-order")
-    captured: dict[str, Any] = {}
-
-    def fake_get(url: str, headers: dict[str, str], params: dict[str, Any], timeout: int) -> DummyResponse:
-        captured["url"] = url
-        captured["headers"] = headers
-        captured["params"] = params
-        captured["timeout"] = timeout
-        return DummyResponse(ok=True, status_code=200, payload={"ok": True})
-
-    monkeypatch.setattr("input.input.coinglass.coinglass_client.requests.get", fake_get)
-
-    client = CoinGlassClient(api_key="test-key", endpoint_catalog=stub_catalog, timeout=9)
-    payload = client.fetch_endpoint(CoinGlassRequest(endpoint_key=contract.key, symbol="BTC"))
-
-    assert stub_catalog.require_contract_calls == [contract.key]
-    assert stub_catalog.require_url_calls == [contract.key]
-    assert captured["url"] == stub_catalog.url
-    assert payload.status == SourceStatus.OK
-
-
-def test_client_rejects_unknown_endpoint_key() -> None:
-    contract = EndpointContract(
-        key="known",
-        path="/api/known",
-        category="test",
-        priority="P1",
-        use="test",
-        cache_ttl_sec=1,
-    )
-    stub_catalog = StubCatalog(contract=contract, url="https://stub.coinglass.local/api/known", fail_contract_lookup=True)
-    client = CoinGlassClient(api_key="test-key", endpoint_catalog=stub_catalog)
-
-    with pytest.raises(InputValidationError, match="Unknown CoinGlass endpoint_key"):
-        client.fetch_endpoint(CoinGlassRequest(endpoint_key="unknown"))
-
-    assert stub_catalog.require_contract_calls == ["unknown"]
-    assert stub_catalog.require_url_calls == []
-
-
-def test_client_metadata_includes_contract_fields(monkeypatch: pytest.MonkeyPatch) -> None:
-    contract = EndpointContract(
-        key="futures_orderbook_large_limit_order",
-        path="/api/futures/orderbook/large-limit-order",
-        category="whale_orderbook",
-        priority="P1",
-        use="current_large_limit_orders_for_whale_orderbook_detection",
-        cache_ttl_sec=15,
-    )
-    stub_catalog = StubCatalog(contract=contract, url="https://stub.coinglass.local/api/futures/orderbook/large-limit-order")
-
-    monkeypatch.setattr(
-        "input.input.coinglass.coinglass_client.requests.get",
-        lambda *args, **kwargs: DummyResponse(ok=False, status_code=429, payload=None, text="rate limit"),
-    )
-
-    client = CoinGlassClient(api_key="test-key", endpoint_catalog=stub_catalog)
-    payload = client.fetch_endpoint(
-        CoinGlassRequest(endpoint_key=contract.key, symbol="BTC", params={"exchange": "binance"})
-    )
-
-    assert payload.status == SourceStatus.ERROR
-    assert payload.metadata["path"] == contract.path
-    assert payload.metadata["base_url"] == stub_catalog.base_url
-    assert payload.metadata["priority"] == contract.priority
-    assert payload.metadata["category"] == contract.category
-    assert payload.metadata["use"] == contract.use
-    assert payload.metadata["cache_ttl_sec"] == contract.cache_ttl_sec
-    assert payload.metadata["status_code"] == 429
-
-
-def test_fetch_raw_converts_source_request_to_coinglass_request(monkeypatch: pytest.MonkeyPatch) -> None:
-    captured: dict[str, CoinGlassRequest] = {}
-
-    def fake_fetch_endpoint(self: CoinGlassClient, request: CoinGlassRequest) -> RawInputPayload:
-        captured["request"] = request
-        return RawInputPayload(
-            source=self.source_name,
-            endpoint=request.endpoint_key,
-            status=SourceStatus.OK,
-            data={"ok": True},
-            metadata={},
+    def fetch_raw(self, endpoint: EndpointMetadata, params: dict[str, Any] | None = None) -> RawResponseContract:
+        request_params = dict(params or {})
+        self.calls.append((endpoint, request_params))
+        return RawResponseContract(
+            endpoint_id=endpoint.endpoint_id,
+            provider=endpoint.provider,
+            url=f"https://stub.local{endpoint.path}",
+            method=endpoint.method,
+            status_code=200,
+            ok=True,
+            data={"data": [{"value": 1.0}]},
+            params=request_params,
+            metadata={"family": endpoint.family, "output_type": endpoint.output_type},
         )
 
-    monkeypatch.setattr(CoinGlassClient, "fetch_endpoint", fake_fetch_endpoint)
 
-    client = CoinGlassClient(api_key="test-key")
-    response = client.fetch_raw(
-        SourceRequest(source="coinglass", endpoint="futures_orderbook_large_limit_order", symbol="BTC", params={"x": 1})
+def test_registry_json_exists_and_has_priorities() -> None:
+    payload = _load_registry_payload()
+    assert ENDPOINTS_PATH.exists()
+    assert "priorities" in payload
+    assert set(payload["priorities"].keys()) >= {"P1", "P2", "P3"}
+
+
+def test_registry_disallows_direct_binance_provider() -> None:
+    payload = _load_registry_payload()
+    entries = list(_iter_endpoint_entries(payload))
+    providers = {str(entry.get("provider", "")).lower() for entry in entries}
+
+    assert "binance" in {p.lower() for p in payload.get("forbidden_direct_providers", [])}
+    assert "binance" not in providers
+
+
+def test_no_binance_client_module_or_file() -> None:
+    binance_client_path = ROOT / "src" / "input" / "input" / "binance_client.py"
+    assert not binance_client_path.exists()
+    with pytest.raises(ModuleNotFoundError):
+        importlib.import_module("input.input.binance_client")
+
+
+def test_pipeline_loads_registry_without_legacy_catalog() -> None:
+    pipeline = Pipeline(endpoints_path=ENDPOINTS_PATH)
+    endpoint_ids = pipeline.list_endpoint_ids()
+
+    assert endpoint_ids
+    assert any(endpoint_id.startswith("coinglass_") for endpoint_id in endpoint_ids)
+
+
+def test_pipeline_resolves_endpoints_from_registry_not_hardcoded_paths() -> None:
+    pipeline = Pipeline(endpoints_path=ENDPOINTS_PATH)
+    endpoint_id = next(
+        candidate
+        for candidate in pipeline.list_endpoint_ids()
+        if pipeline._records[candidate].provider == "coinglass"
     )
+    record = pipeline._records[endpoint_id]
 
-    assert response.status == SourceStatus.OK
-    assert captured["request"] == CoinGlassRequest(
-        endpoint_key="futures_orderbook_large_limit_order",
-        symbol="BTC",
-        params={"x": 1},
-    )
+    stub_client = StubClient()
+    pipeline._clients["coinglass"] = stub_client
 
+    response = pipeline.run(endpoint_id=endpoint_id, params=_params_for(record.required_params))
 
-def test_build_params_preserves_explicit_params_precedence() -> None:
-    request = CoinGlassRequest(
-        endpoint_key="futures_orderbook_large_limit_order",
-        symbol="BTC",
-        params={"symbol": "ETH", "interval": "4h", "foo": "bar"},
-        exchange="binance",
-        interval="1h",
-        limit=100,
-    )
-
-    params = CoinGlassClient._build_params(request)
-
-    assert params["symbol"] == "ETH"
-    assert params["interval"] == "4h"
-    assert params["exchange"] == "binance"
-    assert params["limit"] == 100
-    assert params["foo"] == "bar"
+    assert stub_client.calls
+    called_endpoint, _ = stub_client.calls[0]
+    assert called_endpoint.path == record.path
+    assert called_endpoint.endpoint_id == endpoint_id
+    assert response.url.endswith(record.path)
