@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "description": "Unified INPUT endpoint registry grouped by priority and official INPUT family. Direct Binance provider is intentionally excluded.",
+  "description": "Cleaned INPUT endpoint registry. Keeps only operational P1, confirmation P2, and contextual P3 endpoints selected for the trading pipeline. Research/parking endpoints removed.",
   "allowed_providers": [
     "coinglass",
     "cryptoquant"
@@ -30,39 +30,29 @@
     "technical_indicator_external"
   ],
   "notes": [
-    "CoinGlass big registry was grouped by P1/P2/P3 and mapped into official INPUT families.",
-    "The smaller CoinGlass registry was used to enrich duplicate paths with explicit endpoint_id and required/optional params.",
-    "Endpoints with technical_indicator_external are excluded because technical indicators will be calculated internally in INPUT_processing/math or later PROCESSING.",
-    "CryptoQuant includes 13 endpoints after adding btc_coinbase_premium_index as MARKET_REGIME P2 for US institutional spot demand confirmation."
+    "P1 = operational core: OHLC, order book/liquidity, OI, CVD, current whale/large order alerts.",
+    "P2 = confirmation layer: market depth history, whale/large history, exchange flows, long/short sentiment, funding, liquidations.",
+    "P3 = contextual layer: Coinbase premium, ETF, options context, stablecoin liquidity, news/calendar/regime, miner ratio/MPI.",
+    "Research and parking endpoints were removed from this registry.",
+    "Direct Binance provider remains intentionally excluded. Binance can only appear as an exchange parameter inside CoinGlass/CryptoQuant calls."
   ],
   "priorities": {
     "P1": {
       "PRICE_MARKET": [
         {
-          "endpoint_id": "coinglass_futures_pairs_markets",
-          "provider": "coinglass",
-          "path": "/api/futures/pairs-markets",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "PRICE_MARKET",
-          "source_category": "market_snapshot",
-          "priority": "P1",
-          "output_type": "snapshot",
-          "ttl_seconds": 60,
-          "use": "futures_pair_market_snapshot_for_hmi_and_symbol_selection",
-          "source_keys": [
-            "futures_pairs_markets"
-          ],
-          "param_review_required": true
-        },
-        {
           "endpoint_id": "coinglass_futures_price_history",
           "provider": "coinglass",
           "path": "/api/futures/price/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "PRICE_MARKET",
           "source_category": "ohlc",
           "priority": "P1",
@@ -72,15 +62,28 @@
           "source_keys": [
             "futures_price_history"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         },
         {
           "endpoint_id": "coinglass_spot_price_history",
           "provider": "coinglass",
           "path": "/api/spot/price/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "PRICE_MARKET",
           "source_category": "ohlc",
           "priority": "P1",
@@ -90,150 +93,22 @@
           "source_keys": [
             "spot_price_history"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         }
       ],
       "DERIVATIVES_RISK": [
         {
-          "endpoint_id": "coinglass_futures_exchange_rank",
-          "provider": "coinglass",
-          "path": "/api/futures/exchange-rank",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "exchange_metadata",
-          "priority": "P1",
-          "output_type": "snapshot",
-          "ttl_seconds": 3600,
-          "use": "exchange_weighting_for_signal_confidence",
-          "source_keys": [
-            "futures_exchange_rank"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_funding_rate",
-          "provider": "coinglass",
-          "path": "/api/futures/funding-rate/history",
-          "method": "GET",
-          "required_params": [
-            "symbol",
-            "interval"
-          ],
-          "optional_params": [
-            "start_time",
-            "end_time",
-            "limit"
-          ],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "funding_rate",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "pair_funding_rate_for_crowding_and_squeeze_risk",
-          "source_keys": [
-            "futures_funding_rate_history",
-            "coinglass_futures_funding_rate"
-          ],
-          "param_review_required": false
-        },
-        {
-          "endpoint_id": "coinglass_futures_funding_rate_exchange_list",
-          "provider": "coinglass",
-          "path": "/api/futures/funding-rate/exchange-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "funding_rate",
-          "priority": "P1",
-          "output_type": "snapshot",
-          "ttl_seconds": 300,
-          "use": "funding_rate_by_exchange_for_crowding_divergence",
-          "source_keys": [
-            "futures_funding_rate_exchange_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_funding_rate_oi_weight_history",
-          "provider": "coinglass",
-          "path": "/api/futures/funding-rate/oi-weight-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "funding_rate",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "oi_weighted_funding_rate_for_market_wide_crowding",
-          "source_keys": [
-            "futures_funding_rate_oi_weight_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_funding_rate_vol_weight_history",
-          "provider": "coinglass",
-          "path": "/api/futures/funding-rate/vol-weight-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "funding_rate",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "volume_weighted_funding_rate_for_market_wide_crowding",
-          "source_keys": [
-            "futures_funding_rate_vol_weight_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_global_long_short_account_ratio_history",
-          "provider": "coinglass",
-          "path": "/api/futures/global-long-short-account-ratio/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "long_short_ratio",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 60,
-          "use": "global_account_long_short_ratio_for_retail_crowding",
-          "source_keys": [
-            "futures_global_long_short_account_ratio_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_net_position_history_v2",
-          "provider": "coinglass",
-          "path": "/api/futures/v2/net-position/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "positioning",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 60,
-          "use": "net_position_v2_for_directional_positioning_context",
-          "source_keys": [
-            "futures_net_position_history_v2"
-          ],
-          "param_review_required": true
-        },
-        {
           "endpoint_id": "coinglass_futures_open_interest",
           "provider": "coinglass",
           "path": "/api/futures/open-interest/history",
-          "method": "GET",
           "required_params": [
+            "exchange",
             "symbol",
             "interval"
           ],
@@ -252,133 +127,13 @@
             "futures_open_interest_history",
             "coinglass_futures_open_interest"
           ],
-          "param_review_required": false
-        },
-        {
-          "endpoint_id": "coinglass_futures_open_interest_aggregated_coin_margin_history",
-          "provider": "coinglass",
-          "path": "/api/futures/open-interest/aggregated-coin-margin-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "open_interest",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "coin_margin_open_interest_for_leverage_composition",
-          "source_keys": [
-            "futures_open_interest_aggregated_coin_margin_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_open_interest_aggregated_history",
-          "provider": "coinglass",
-          "path": "/api/futures/open-interest/aggregated-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "open_interest",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 60,
-          "use": "coin_aggregated_open_interest_for_leverage_state",
-          "source_keys": [
-            "futures_open_interest_aggregated_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_open_interest_aggregated_stablecoin_history",
-          "provider": "coinglass",
-          "path": "/api/futures/open-interest/aggregated-stablecoin-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "open_interest",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "stablecoin_margin_open_interest_for_leverage_composition",
-          "source_keys": [
-            "futures_open_interest_aggregated_stablecoin_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_open_interest_exchange_history_chart",
-          "provider": "coinglass",
-          "path": "/api/futures/open-interest/exchange-history-chart",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "open_interest",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "open_interest_by_exchange_history_for_exchange_concentration",
-          "source_keys": [
-            "futures_open_interest_exchange_history_chart"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_open_interest_exchange_list",
-          "provider": "coinglass",
-          "path": "/api/futures/open-interest/exchange-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "open_interest",
-          "priority": "P1",
-          "output_type": "snapshot",
-          "ttl_seconds": 60,
-          "use": "open_interest_by_exchange_for_exchange_weighting",
-          "source_keys": [
-            "futures_open_interest_exchange_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_top_long_short_account_ratio_history",
-          "provider": "coinglass",
-          "path": "/api/futures/top-long-short-account-ratio/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "long_short_ratio",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 60,
-          "use": "top_trader_account_long_short_ratio_for_smart_money_context",
-          "source_keys": [
-            "futures_top_long_short_account_ratio_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_top_long_short_position_ratio_history",
-          "provider": "coinglass",
-          "path": "/api/futures/top-long-short-position-ratio/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "long_short_ratio",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 60,
-          "use": "top_trader_position_long_short_ratio_for_smart_money_context",
-          "source_keys": [
-            "futures_top_long_short_position_ratio_history"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         }
       ],
       "ORDER_FLOW": [
@@ -386,9 +141,16 @@
           "endpoint_id": "coinglass_futures_aggregated_cvd_history",
           "provider": "coinglass",
           "path": "/api/futures/aggregated-cvd/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange_list",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "ORDER_FLOW",
           "source_category": "cvd",
           "priority": "P1",
@@ -398,33 +160,28 @@
           "source_keys": [
             "futures_aggregated_cvd_history"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_aggregated_taker_buy_sell_volume_history",
-          "provider": "coinglass",
-          "path": "/api/futures/aggregated-taker-buy-sell-volume/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ORDER_FLOW",
-          "source_category": "volume_orderflow",
-          "priority": "P1",
-          "output_type": "event_list",
-          "ttl_seconds": 30,
-          "use": "coin_taker_buy_sell_volume_for_aggressive_flow",
-          "source_keys": [
-            "futures_aggregated_taker_buy_sell_volume_history"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
         },
         {
           "endpoint_id": "coinglass_futures_cvd_history",
           "provider": "coinglass",
           "path": "/api/futures/cvd/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "ORDER_FLOW",
           "source_category": "cvd",
           "priority": "P1",
@@ -434,51 +191,28 @@
           "source_keys": [
             "futures_cvd_history"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_spot_volume_ratio",
-          "provider": "coinglass",
-          "path": "/api/futures_spot_volume_ratio",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ORDER_FLOW",
-          "source_category": "volume_regime",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "futures_vs_spot_volume_ratio_for_leverage_vs_spot_driven_move",
-          "source_keys": [
-            "futures_spot_volume_ratio"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_taker_buy_sell_volume_exchange_list",
-          "provider": "coinglass",
-          "path": "/api/futures/taker-buy-sell-volume/exchange-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ORDER_FLOW",
-          "source_category": "long_short_ratio",
-          "priority": "P1",
-          "output_type": "snapshot",
-          "ttl_seconds": 60,
-          "use": "exchange_taker_buy_sell_ratio_for_aggressive_flow_by_exchange",
-          "source_keys": [
-            "futures_taker_buy_sell_volume_exchange_list"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         },
         {
           "endpoint_id": "coinglass_futures_taker_buy_sell_volume_history_v2",
           "provider": "coinglass",
           "path": "/api/futures/v2/taker-buy-sell-volume/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "ORDER_FLOW",
           "source_category": "volume_orderflow",
           "priority": "P1",
@@ -488,70 +222,22 @@
           "source_keys": [
             "futures_taker_buy_sell_volume_history_v2"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_volume_footprint_history",
-          "provider": "coinglass",
-          "path": "/api/futures/volume/footprint-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ORDER_FLOW",
-          "source_category": "volume_orderflow",
-          "priority": "P1",
-          "output_type": "event_list",
-          "ttl_seconds": 60,
-          "use": "futures_footprint_for_absorption_aggression_and_large_trade_context",
-          "source_keys": [
-            "futures_volume_footprint_history"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         }
       ],
-      "LIQUIDITY_BOOK": [
+      "SPOT_REAL_FLOW": [
         {
-          "endpoint_id": "coinglass_futures_orderbook_aggregated_ask_bids_history",
+          "endpoint_id": "coinglass_spot_aggregated_cvd_history",
           "provider": "coinglass",
-          "path": "/api/futures/orderbook/aggregated-ask-bids-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDITY_BOOK",
-          "source_category": "orderbook",
-          "priority": "P1",
-          "output_type": "event_list",
-          "ttl_seconds": 30,
-          "use": "coin_aggregated_bid_ask_depth_for_market_wide_liquidity_pressure",
-          "source_keys": [
-            "futures_orderbook_aggregated_ask_bids_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_orderbook_history",
-          "provider": "coinglass",
-          "path": "/api/futures/orderbook/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDITY_BOOK",
-          "source_category": "orderbook_heatmap",
-          "priority": "P1",
-          "output_type": "heatmap",
-          "ttl_seconds": 30,
-          "use": "futures_orderbook_heatmap_for_liquidity_walls_and_spoofing_context",
-          "source_keys": [
-            "futures_orderbook_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_orderbook_pressure",
-          "provider": "coinglass",
-          "path": "/api/futures/orderbook/ask-bids-history",
-          "method": "GET",
+          "path": "/api/spot/aggregated-cvd/history",
           "required_params": [
+            "exchange_list",
             "symbol",
             "interval"
           ],
@@ -559,6 +245,102 @@
             "start_time",
             "end_time",
             "limit"
+          ],
+          "family": "SPOT_REAL_FLOW",
+          "source_category": "spot_cvd",
+          "priority": "P1",
+          "output_type": "time_series",
+          "ttl_seconds": 30,
+          "use": "spot_aggregated_cvd_for_market_wide_spot_delta",
+          "source_keys": [
+            "spot_aggregated_cvd_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_spot_cvd_history",
+          "provider": "coinglass",
+          "path": "/api/spot/cvd/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "SPOT_REAL_FLOW",
+          "source_category": "spot_cvd",
+          "priority": "P1",
+          "output_type": "time_series",
+          "ttl_seconds": 30,
+          "use": "spot_pair_cvd_for_real_spot_delta_divergence",
+          "source_keys": [
+            "spot_cvd_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_spot_taker_buy_sell_volume_history",
+          "provider": "coinglass",
+          "path": "/api/spot/taker-buy-sell-volume/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "SPOT_REAL_FLOW",
+          "source_category": "spot_volume_orderflow",
+          "priority": "P1",
+          "output_type": "event_list",
+          "ttl_seconds": 30,
+          "use": "spot_pair_taker_buy_sell_volume_for_real_buy_sell_aggression",
+          "source_keys": [
+            "spot_taker_buy_sell_volume_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        }
+      ],
+      "LIQUIDITY_BOOK": [
+        {
+          "endpoint_id": "coinglass_futures_orderbook_pressure",
+          "provider": "coinglass",
+          "path": "/api/futures/orderbook/ask-bids-history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit",
+            "range"
           ],
           "family": "LIQUIDITY_BOOK",
           "source_category": "orderbook",
@@ -570,7 +352,47 @@
             "futures_orderbook_ask_bids_history",
             "coinglass_futures_orderbook_pressure"
           ],
-          "param_review_required": false
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "range": "1",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_ask_bids_history",
+          "provider": "coinglass",
+          "path": "/api/spot/orderbook/ask-bids-history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit",
+            "range"
+          ],
+          "family": "LIQUIDITY_BOOK",
+          "source_category": "spot_orderbook",
+          "priority": "P1",
+          "output_type": "event_list",
+          "ttl_seconds": 30,
+          "use": "spot_pair_bid_ask_depth_for_real_liquidity_confirmation",
+          "source_keys": [
+            "spot_orderbook_ask_bids_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "range": "1",
+            "limit": 5
+          }
         }
       ],
       "WHALES_LARGE_PLAYERS": [
@@ -578,8 +400,10 @@
           "endpoint_id": "coinglass_futures_orderbook_large_limit_order",
           "provider": "coinglass",
           "path": "/api/futures/orderbook/large-limit-order",
-          "method": "GET",
-          "required_params": [],
+          "required_params": [
+            "exchange",
+            "symbol"
+          ],
           "optional_params": [],
           "family": "WHALES_LARGE_PLAYERS",
           "source_category": "whale_orderbook",
@@ -590,68 +414,20 @@
           "source_keys": [
             "futures_orderbook_large_limit_order"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_orderbook_large_limit_order_history",
-          "provider": "coinglass",
-          "path": "/api/futures/orderbook/large-limit-order-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "whale_orderbook",
-          "priority": "P1",
-          "output_type": "event_list",
-          "ttl_seconds": 30,
-          "use": "large_limit_order_history_for_absorption_spoofing_and_wall_persistence",
-          "source_keys": [
-            "futures_orderbook_large_limit_order_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_hyperliquid_global_long_short_account_ratio_history",
-          "provider": "coinglass",
-          "path": "/api/hyperliquid/global-long-short-account-ratio/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "long_short_ratio",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 60,
-          "use": "hyperliquid_long_short_ratio_for_perp_crowding_context",
-          "source_keys": [
-            "hyperliquid_global_long_short_account_ratio_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_hyperliquid_whale_position",
-          "provider": "coinglass",
-          "path": "/api/hyperliquid/whale-position",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "whale_positions",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 30,
-          "use": "hyperliquid_whale_positions_for_large_trader_context",
-          "source_keys": [
-            "hyperliquid_whale_position"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT"
+          }
         },
         {
           "endpoint_id": "coinglass_spot_orderbook_large_limit_order",
           "provider": "coinglass",
           "path": "/api/spot/orderbook/large-limit-order",
-          "method": "GET",
-          "required_params": [],
+          "required_params": [
+            "exchange",
+            "symbol"
+          ],
           "optional_params": [],
           "family": "WHALES_LARGE_PLAYERS",
           "source_category": "spot_whale_orderbook",
@@ -662,694 +438,113 @@
           "source_keys": [
             "spot_orderbook_large_limit_order"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT"
+          }
         },
         {
-          "endpoint_id": "coinglass_spot_orderbook_large_limit_order_history",
+          "endpoint_id": "coinglass_hyperliquid_whale_alert",
           "provider": "coinglass",
-          "path": "/api/spot/orderbook/large-limit-order-history",
-          "method": "GET",
+          "path": "/api/hyperliquid/whale-alert",
           "required_params": [],
           "optional_params": [],
           "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "spot_whale_orderbook",
+          "source_category": "whale_alerts",
           "priority": "P1",
           "output_type": "event_list",
           "ttl_seconds": 30,
-          "use": "spot_large_limit_order_history_for_wall_persistence",
+          "use": "hyperliquid_whale_alerts_for_event_driven_notifications",
           "source_keys": [
-            "spot_orderbook_large_limit_order_history"
+            "hyperliquid_whale_alert"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "cryptoquant_btc_exchange_whale_ratio",
-          "provider": "cryptoquant",
-          "path": "/v1/btc/flow-indicator/exchange-whale-ratio",
-          "method": "GET",
-          "required_params": [
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "onchain_flow_indicator",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "Ratio of large BTC exchange inflows relative to total inflows for whale risk.",
-          "source_keys": [
-            "btc_exchange_whale_ratio"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        }
-      ],
-      "LIQUIDATION_RISK": [
-        {
-          "endpoint_id": "coinglass_futures_liquidation_aggregated_heatmap_model2",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/aggregated-heatmap/model2",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_heatmap",
-          "priority": "P1",
-          "output_type": "heatmap",
-          "ttl_seconds": 60,
-          "use": "coin_liquidation_heatmap_primary_for_aggregated_liquidity_zones",
-          "source_keys": [
-            "futures_liquidation_aggregated_heatmap_model2"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_aggregated_history",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/aggregated-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 30,
-          "use": "coin_liquidation_history_for_market_wide_squeeze_detection",
-          "source_keys": [
-            "futures_liquidation_aggregated_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_aggregated_map",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/aggregated-map",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_map",
-          "priority": "P1",
-          "output_type": "map",
-          "ttl_seconds": 60,
-          "use": "coin_liquidation_map_for_aggregated_liquidity_clusters",
-          "source_keys": [
-            "futures_liquidation_aggregated_map"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_heatmap_model2",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/heatmap/model2",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_heatmap",
-          "priority": "P1",
-          "output_type": "heatmap",
-          "ttl_seconds": 60,
-          "use": "pair_liquidation_heatmap_primary_for_liquidity_zones",
-          "source_keys": [
-            "futures_liquidation_heatmap_model2"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_history",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 30,
-          "use": "pair_liquidation_history_for_squeeze_and_stop_hunt_detection",
-          "source_keys": [
-            "futures_liquidation_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_map",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/map",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_map",
-          "priority": "P1",
-          "output_type": "map",
-          "ttl_seconds": 60,
-          "use": "pair_liquidation_map_for_nearby_liquidity_clusters",
-          "source_keys": [
-            "futures_liquidation_map"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_max_pain",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/max-pain",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "liquidation_max_pain_for_magnet_levels_and_risk_zones",
-          "source_keys": [
-            "futures_liquidation_max_pain"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_order",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/order",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 15,
-          "use": "real_time_liquidation_orders_for_alerts_and_squeeze_validation",
-          "source_keys": [
-            "futures_liquidation_order"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "SPOT_REAL_FLOW": [
-        {
-          "endpoint_id": "coinglass_coinbase_premium_index",
-          "provider": "coinglass",
-          "path": "/api/coinbase-premium-index",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "SPOT_REAL_FLOW",
-          "source_category": "sentiment_premium",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "coinbase_premium_for_us_spot_demand_sentiment",
-          "source_keys": [
-            "coinbase_premium_index"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_aggregated_cvd_history",
-          "provider": "coinglass",
-          "path": "/api/spot/aggregated-cvd/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "SPOT_REAL_FLOW",
-          "source_category": "spot_cvd",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 30,
-          "use": "spot_aggregated_cvd_for_market_wide_spot_delta",
-          "source_keys": [
-            "spot_aggregated_cvd_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_aggregated_taker_buy_sell_volume_history",
-          "provider": "coinglass",
-          "path": "/api/spot/aggregated-taker-buy-sell-volume/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "SPOT_REAL_FLOW",
-          "source_category": "spot_volume_orderflow",
-          "priority": "P1",
-          "output_type": "event_list",
-          "ttl_seconds": 30,
-          "use": "spot_coin_taker_buy_sell_volume_for_real_spot_aggression",
-          "source_keys": [
-            "spot_aggregated_taker_buy_sell_volume_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_cvd_history",
-          "provider": "coinglass",
-          "path": "/api/spot/cvd/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "SPOT_REAL_FLOW",
-          "source_category": "spot_cvd",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 30,
-          "use": "spot_pair_cvd_for_real_spot_delta_divergence",
-          "source_keys": [
-            "spot_cvd_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_taker_buy_sell_volume_history",
-          "provider": "coinglass",
-          "path": "/api/spot/taker-buy-sell-volume/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "SPOT_REAL_FLOW",
-          "source_category": "spot_volume_orderflow",
-          "priority": "P1",
-          "output_type": "event_list",
-          "ttl_seconds": 30,
-          "use": "spot_pair_taker_buy_sell_volume_for_real_buy_sell_aggression",
-          "source_keys": [
-            "spot_taker_buy_sell_volume_history"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "MARKET_REGIME": [
-        {
-          "endpoint_id": "coinglass_fear_greed_history",
-          "provider": "coinglass",
-          "path": "/api/index/fear-greed-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "sentiment",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "fear_greed_index_for_sentiment_regime",
-          "source_keys": [
-            "fear_greed_history"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "ONCHAIN_EXCHANGE_FLOW": [
-        {
-          "endpoint_id": "cryptoquant_btc_exchange_inflow",
-          "provider": "cryptoquant",
-          "path": "/v1/btc/exchange-flows/inflow",
-          "method": "GET",
-          "required_params": [
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "onchain_exchange_flows",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "BTC flowing into exchange wallets for potential sell pressure.",
-          "source_keys": [
-            "btc_exchange_inflow"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        },
-        {
-          "endpoint_id": "cryptoquant_btc_exchange_netflow",
-          "provider": "cryptoquant",
-          "path": "/v1/btc/exchange-flows/netflow",
-          "method": "GET",
-          "required_params": [
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "onchain_exchange_flows",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "Net BTC flow into or out of exchange wallets.",
-          "source_keys": [
-            "btc_exchange_netflow"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        },
-        {
-          "endpoint_id": "cryptoquant_btc_exchange_outflow",
-          "provider": "cryptoquant",
-          "path": "/v1/btc/exchange-flows/outflow",
-          "method": "GET",
-          "required_params": [
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "onchain_exchange_flows",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "BTC flowing out of exchange wallets for accumulation/custody context.",
-          "source_keys": [
-            "btc_exchange_outflow"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        },
-        {
-          "endpoint_id": "cryptoquant_btc_exchange_reserve",
-          "provider": "cryptoquant",
-          "path": "/v1/btc/exchange-flows/reserve",
-          "method": "GET",
-          "required_params": [
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "onchain_exchange_flows",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "BTC reserve held by exchange wallets for exchange supply context.",
-          "source_keys": [
-            "btc_exchange_reserve"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        }
-      ],
-      "STABLECOIN_LIQUIDITY": [
-        {
-          "endpoint_id": "cryptoquant_stablecoin_exchange_inflow",
-          "provider": "cryptoquant",
-          "path": "/v1/stablecoin/exchange-flows/inflow",
-          "method": "GET",
-          "required_params": [
-            "token",
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "STABLECOIN_LIQUIDITY",
-          "source_category": "stablecoin_exchange_flows",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "Stablecoins flowing into exchanges for potential buying power.",
-          "source_keys": [
-            "stablecoin_exchange_inflow"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        },
-        {
-          "endpoint_id": "cryptoquant_stablecoin_exchange_netflow",
-          "provider": "cryptoquant",
-          "path": "/v1/stablecoin/exchange-flows/netflow",
-          "method": "GET",
-          "required_params": [
-            "token",
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "STABLECOIN_LIQUIDITY",
-          "source_category": "stablecoin_exchange_flows",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "Net stablecoin flow into or out of exchanges.",
-          "source_keys": [
-            "stablecoin_exchange_netflow"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        },
-        {
-          "endpoint_id": "cryptoquant_stablecoin_exchange_reserve",
-          "provider": "cryptoquant",
-          "path": "/v1/stablecoin/exchange-flows/reserve",
-          "method": "GET",
-          "required_params": [
-            "token",
-            "exchange",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "STABLECOIN_LIQUIDITY",
-          "source_category": "stablecoin_exchange_flows",
-          "priority": "P1",
-          "output_type": "time_series",
-          "ttl_seconds": 120,
-          "use": "Stablecoin reserves held by exchanges for dry-powder liquidity context.",
-          "source_keys": [
-            "stablecoin_exchange_reserve"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+          "param_review_required": false,
+          "default_params": {}
         }
       ]
     },
     "P2": {
-      "PRICE_MARKET": [
-        {
-          "endpoint_id": "coinglass_futures_coins_markets",
-          "provider": "coinglass",
-          "path": "/api/futures/coins-markets",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "PRICE_MARKET",
-          "source_category": "market_snapshot",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 60,
-          "use": "futures_coin_market_scanner_for_multi_asset_watchlist",
-          "source_keys": [
-            "futures_coins_markets"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_coins_price_change",
-          "provider": "coinglass",
-          "path": "/api/futures/coins-price-change",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "PRICE_MARKET",
-          "source_category": "market_snapshot",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 60,
-          "use": "price_change_ranking_for_volatility_alerts",
-          "source_keys": [
-            "futures_coins_price_change"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_pairs_markets",
-          "provider": "coinglass",
-          "path": "/api/spot/pairs-markets",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "PRICE_MARKET",
-          "source_category": "market_snapshot",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 60,
-          "use": "spot_pair_market_snapshot_for_spot_context",
-          "source_keys": [
-            "spot_pairs_markets"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "DERIVATIVES_RISK": [
-        {
-          "endpoint_id": "coinglass_bitfinex_margin_long_short",
-          "provider": "coinglass",
-          "path": "/api/bitfinex-margin-long-short",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "margin_sentiment",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 600,
-          "use": "bitfinex_margin_long_short_for_legacy_whale_sentiment_context",
-          "source_keys": [
-            "bitfinex_margin_long_short"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_basis_history",
-          "provider": "coinglass",
-          "path": "/api/futures/basis/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "basis",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "futures_basis_for_contango_backwardation_and_leverage_stress",
-          "source_keys": [
-            "futures_basis_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_funding_rate_accumulated_exchange_list",
-          "provider": "coinglass",
-          "path": "/api/futures/funding-rate/accumulated-exchange-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "funding_rate",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 600,
-          "use": "cumulative_funding_rate_by_exchange_for_positioning_context",
-          "source_keys": [
-            "futures_funding_rate_accumulated_exchange_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_net_position_history",
-          "provider": "coinglass",
-          "path": "/api/futures/net-position/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "DERIVATIVES_RISK",
-          "source_category": "positioning",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "legacy_net_position_history_if_v2_is_unavailable",
-          "source_keys": [
-            "futures_net_position_history"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "ORDER_FLOW": [
-        {
-          "endpoint_id": "coinglass_futures_coin_netflow",
-          "provider": "coinglass",
-          "path": "/api/futures/coin/netflow",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ORDER_FLOW",
-          "source_category": "futures_flow",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "futures_coin_netflow_for_exchange_inflow_outflow_confirmation",
-          "source_keys": [
-            "futures_coin_netflow"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_netflow_list",
-          "provider": "coinglass",
-          "path": "/api/futures/netflow-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ORDER_FLOW",
-          "source_category": "futures_flow",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 300,
-          "use": "futures_netflow_list_for_exchange_flow_alerts",
-          "source_keys": [
-            "futures_netflow_list"
-          ],
-          "param_review_required": true
-        }
-      ],
       "LIQUIDITY_BOOK": [
+        {
+          "endpoint_id": "coinglass_futures_orderbook_aggregated_ask_bids_history",
+          "provider": "coinglass",
+          "path": "/api/futures/orderbook/aggregated-ask-bids-history",
+          "required_params": [
+            "exchange_list",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit",
+            "range"
+          ],
+          "family": "LIQUIDITY_BOOK",
+          "source_category": "orderbook",
+          "priority": "P2",
+          "output_type": "event_list",
+          "ttl_seconds": 30,
+          "use": "coin_aggregated_bid_ask_depth_for_market_wide_liquidity_pressure",
+          "source_keys": [
+            "futures_orderbook_aggregated_ask_bids_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "4h",
+            "range": "1",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_history",
+          "provider": "coinglass",
+          "path": "/api/futures/orderbook/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "LIQUIDITY_BOOK",
+          "source_category": "orderbook_heatmap",
+          "priority": "P2",
+          "output_type": "heatmap",
+          "ttl_seconds": 30,
+          "use": "futures_orderbook_heatmap_for_liquidity_walls_and_spoofing_context",
+          "source_keys": [
+            "futures_orderbook_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "4h",
+            "limit": 5
+          }
+        },
         {
           "endpoint_id": "coinglass_spot_orderbook_aggregated_ask_bids_history",
           "provider": "coinglass",
           "path": "/api/spot/orderbook/aggregated-ask-bids-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange_list",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit",
+            "range"
+          ],
           "family": "LIQUIDITY_BOOK",
           "source_category": "spot_orderbook",
           "priority": "P2",
@@ -1359,33 +554,29 @@
           "source_keys": [
             "spot_orderbook_aggregated_ask_bids_history"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_orderbook_ask_bids_history",
-          "provider": "coinglass",
-          "path": "/api/spot/orderbook/ask-bids-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDITY_BOOK",
-          "source_category": "spot_orderbook",
-          "priority": "P2",
-          "output_type": "event_list",
-          "ttl_seconds": 30,
-          "use": "spot_pair_bid_ask_depth_for_real_liquidity_confirmation",
-          "source_keys": [
-            "spot_orderbook_ask_bids_history"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "4h",
+            "range": "1",
+            "limit": 5
+          }
         },
         {
           "endpoint_id": "coinglass_spot_orderbook_history",
           "provider": "coinglass",
           "path": "/api/spot/orderbook/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "LIQUIDITY_BOOK",
           "source_category": "spot_orderbook_heatmap",
           "priority": "P2",
@@ -1395,17 +586,89 @@
           "source_keys": [
             "spot_orderbook_history"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "4h",
+            "limit": 5
+          }
         }
       ],
       "WHALES_LARGE_PLAYERS": [
         {
+          "endpoint_id": "coinglass_futures_orderbook_large_limit_order_history",
+          "provider": "coinglass",
+          "path": "/api/futures/orderbook/large-limit-order-history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "state"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "WHALES_LARGE_PLAYERS",
+          "source_category": "whale_orderbook",
+          "priority": "P2",
+          "output_type": "event_list",
+          "ttl_seconds": 30,
+          "use": "large_limit_order_history_for_absorption_spoofing_and_wall_persistence",
+          "source_keys": [
+            "futures_orderbook_large_limit_order_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "state": 2,
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_large_limit_order_history",
+          "provider": "coinglass",
+          "path": "/api/spot/orderbook/large-limit-order-history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "state"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "WHALES_LARGE_PLAYERS",
+          "source_category": "spot_whale_orderbook",
+          "priority": "P2",
+          "output_type": "event_list",
+          "ttl_seconds": 30,
+          "use": "spot_large_limit_order_history_for_wall_persistence",
+          "source_keys": [
+            "spot_orderbook_large_limit_order_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "state": 2,
+            "limit": 5
+          }
+        },
+        {
           "endpoint_id": "coinglass_chain_whale_transfer",
           "provider": "coinglass",
           "path": "/api/chain/v2/whale-transfer",
-          "method": "GET",
           "required_params": [],
-          "optional_params": [],
+          "optional_params": [
+            "symbol",
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "WHALES_LARGE_PLAYERS",
           "source_category": "whale_alerts_onchain",
           "priority": "P2",
@@ -1415,15 +678,26 @@
           "source_keys": [
             "chain_whale_transfer"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "limit": 5
+          }
         },
         {
           "endpoint_id": "coinglass_futures_whale_index_history",
           "provider": "coinglass",
           "path": "/api/futures/whale-index/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "WHALES_LARGE_PLAYERS",
           "source_category": "whale_index",
           "priority": "P2",
@@ -1433,67 +707,220 @@
           "source_keys": [
             "futures_whale_index_history"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         },
         {
-          "endpoint_id": "coinglass_hyperliquid_position",
+          "endpoint_id": "coinglass_hyperliquid_global_long_short_account_ratio_history",
           "provider": "coinglass",
-          "path": "/api/hyperliquid/position",
-          "method": "GET",
+          "path": "/api/hyperliquid/global-long-short-account-ratio/history",
           "required_params": [],
-          "optional_params": [],
+          "optional_params": [
+            "symbol",
+            "interval",
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "whale_positions",
+          "source_category": "long_short_ratio",
           "priority": "P2",
           "output_type": "time_series",
           "ttl_seconds": 60,
-          "use": "hyperliquid_position_context_for_large_trader_positioning",
+          "use": "hyperliquid_long_short_ratio_for_perp_crowding_context",
           "source_keys": [
-            "hyperliquid_position"
+            "hyperliquid_global_long_short_account_ratio_history"
           ],
-          "param_review_required": true
-        },
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
+        }
+      ],
+      "ORDER_FLOW": [
         {
-          "endpoint_id": "coinglass_hyperliquid_wallet_position_distribution",
+          "endpoint_id": "coinglass_futures_volume_footprint_history",
           "provider": "coinglass",
-          "path": "/api/hyperliquid/wallet/position-distribution",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "whale_positions",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 600,
-          "use": "wallet_position_distribution_for_hyperliquid_positioning_context",
-          "source_keys": [
-            "hyperliquid_wallet_position_distribution"
+          "path": "/api/futures/volume/footprint-history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_hyperliquid_whale_alert",
-          "provider": "coinglass",
-          "path": "/api/hyperliquid/whale-alert",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "whale_alerts",
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "ORDER_FLOW",
+          "source_category": "volume_orderflow",
           "priority": "P2",
           "output_type": "event_list",
-          "ttl_seconds": 30,
-          "use": "hyperliquid_whale_alerts_for_event_driven_notifications",
+          "ttl_seconds": 60,
+          "use": "futures_footprint_for_absorption_aggression_and_large_trade_context",
           "source_keys": [
-            "hyperliquid_whale_alert"
+            "futures_volume_footprint_history"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         },
         {
-          "endpoint_id": "cryptoquant_btc_exchange_inflow_cdd",
+          "endpoint_id": "coinglass_futures_coin_netflow",
+          "provider": "coinglass",
+          "path": "/api/futures/coin/netflow",
+          "required_params": [
+            "exchange_list",
+            "symbol"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "ORDER_FLOW",
+          "source_category": "futures_flow",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 300,
+          "use": "futures_coin_netflow_for_exchange_inflow_outflow_confirmation",
+          "source_keys": [
+            "futures_coin_netflow"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_netflow_list",
+          "provider": "coinglass",
+          "path": "/api/futures/netflow-list",
+          "required_params": [],
+          "optional_params": [
+            "page",
+            "per_page"
+          ],
+          "family": "ORDER_FLOW",
+          "source_category": "futures_flow",
+          "priority": "P2",
+          "output_type": "snapshot",
+          "ttl_seconds": 300,
+          "use": "futures_netflow_list_for_exchange_flow_alerts",
+          "source_keys": [
+            "futures_netflow_list"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "page": 1,
+            "per_page": 50
+          }
+        }
+      ],
+      "SPOT_REAL_FLOW": [
+        {
+          "endpoint_id": "coinglass_spot_volume_footprint_history",
+          "provider": "coinglass",
+          "path": "/api/spot/volume/footprint-history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "SPOT_REAL_FLOW",
+          "source_category": "spot_volume_orderflow",
+          "priority": "P2",
+          "output_type": "event_list",
+          "ttl_seconds": 60,
+          "use": "spot_footprint_for_absorption_and_real_spot_buying_or_selling",
+          "source_keys": [
+            "spot_volume_footprint_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_spot_coin_netflow",
+          "provider": "coinglass",
+          "path": "/api/spot/coin/netflow",
+          "required_params": [
+            "exchange_list",
+            "symbol"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "SPOT_REAL_FLOW",
+          "source_category": "spot_flow",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 300,
+          "use": "spot_coin_netflow_for_spot_exchange_inflow_outflow_confirmation",
+          "source_keys": [
+            "spot_coin_netflow"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_spot_netflow_list",
+          "provider": "coinglass",
+          "path": "/api/spot/netflow-list",
+          "required_params": [],
+          "optional_params": [
+            "page",
+            "per_page"
+          ],
+          "family": "SPOT_REAL_FLOW",
+          "source_category": "spot_flow",
+          "priority": "P2",
+          "output_type": "snapshot",
+          "ttl_seconds": 300,
+          "use": "spot_netflow_list_for_exchange_inflow_outflow_alerts",
+          "source_keys": [
+            "spot_netflow_list"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "page": 1,
+            "per_page": 50
+          }
+        }
+      ],
+      "ONCHAIN_EXCHANGE_FLOW": [
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_inflow",
           "provider": "cryptoquant",
-          "path": "/v1/btc/flow-indicator/exchange-inflow-cdd",
-          "method": "GET",
+          "path": "/v1/btc/exchange-flows/inflow",
           "required_params": [
             "exchange",
             "window"
@@ -1504,258 +931,819 @@
             "limit",
             "format"
           ],
-          "family": "WHALES_LARGE_PLAYERS",
-          "source_category": "onchain_flow_indicator",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "source_category": "onchain_exchange_flows",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 120,
+          "use": "BTC flowing into exchange wallets for potential sell pressure.",
+          "source_keys": [
+            "btc_exchange_inflow"
+          ],
+          "default_params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_outflow",
+          "provider": "cryptoquant",
+          "path": "/v1/btc/exchange-flows/outflow",
+          "required_params": [
+            "exchange",
+            "window"
+          ],
+          "optional_params": [
+            "from",
+            "to",
+            "limit",
+            "format"
+          ],
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "source_category": "onchain_exchange_flows",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 120,
+          "use": "BTC flowing out of exchange wallets for accumulation/custody context.",
+          "source_keys": [
+            "btc_exchange_outflow"
+          ],
+          "default_params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_netflow",
+          "provider": "cryptoquant",
+          "path": "/v1/btc/exchange-flows/netflow",
+          "required_params": [
+            "exchange",
+            "window"
+          ],
+          "optional_params": [
+            "from",
+            "to",
+            "limit",
+            "format"
+          ],
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "source_category": "onchain_exchange_flows",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 120,
+          "use": "Net BTC flow into or out of exchange wallets.",
+          "source_keys": [
+            "btc_exchange_netflow"
+          ],
+          "default_params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_reserve",
+          "provider": "cryptoquant",
+          "path": "/v1/btc/exchange-flows/reserve",
+          "required_params": [
+            "exchange",
+            "window"
+          ],
+          "optional_params": [
+            "from",
+            "to",
+            "limit",
+            "format"
+          ],
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "source_category": "onchain_exchange_flows",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 120,
+          "use": "BTC reserve held by exchange wallets for exchange supply context.",
+          "source_keys": [
+            "btc_exchange_reserve"
+          ],
+          "default_params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+        }
+      ],
+      "DERIVATIVES_RISK": [
+        {
+          "endpoint_id": "coinglass_futures_global_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "path": "/api/futures/global-long-short-account-ratio/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "DERIVATIVES_RISK",
+          "source_category": "long_short_ratio",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 60,
+          "use": "global_account_long_short_ratio_for_retail_crowding",
+          "source_keys": [
+            "futures_global_long_short_account_ratio_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_top_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "path": "/api/futures/top-long-short-account-ratio/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "DERIVATIVES_RISK",
+          "source_category": "long_short_ratio",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 60,
+          "use": "top_trader_account_long_short_ratio_for_smart_money_context",
+          "source_keys": [
+            "futures_top_long_short_account_ratio_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_top_long_short_position_ratio_history",
+          "provider": "coinglass",
+          "path": "/api/futures/top-long-short-position-ratio/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "DERIVATIVES_RISK",
+          "source_category": "long_short_ratio",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 60,
+          "use": "top_trader_position_long_short_ratio_for_smart_money_context",
+          "source_keys": [
+            "futures_top_long_short_position_ratio_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate",
+          "provider": "coinglass",
+          "path": "/api/futures/funding-rate/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "DERIVATIVES_RISK",
+          "source_category": "funding_rate",
           "priority": "P2",
           "output_type": "time_series",
           "ttl_seconds": 300,
-          "use": "Coin Days Destroyed for BTC flowing into exchanges; detects older coins entering exchanges.",
+          "use": "pair_funding_rate_for_crowding_and_squeeze_risk",
           "source_keys": [
-            "btc_exchange_inflow_cdd"
+            "futures_funding_rate_history",
+            "coinglass_futures_funding_rate"
           ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_exchange_list",
+          "provider": "coinglass",
+          "path": "/api/futures/funding-rate/exchange-list",
+          "required_params": [
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "DERIVATIVES_RISK",
+          "source_category": "funding_rate",
+          "priority": "P2",
+          "output_type": "snapshot",
+          "ttl_seconds": 300,
+          "use": "funding_rate_by_exchange_for_crowding_divergence",
+          "source_keys": [
+            "futures_funding_rate_exchange_list"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_oi_weight_history",
+          "provider": "coinglass",
+          "path": "/api/futures/funding-rate/oi-weight-history",
+          "required_params": [
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "DERIVATIVES_RISK",
+          "source_category": "funding_rate",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 300,
+          "use": "oi_weighted_funding_rate_for_market_wide_crowding",
+          "source_keys": [
+            "futures_funding_rate_oi_weight_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_vol_weight_history",
+          "provider": "coinglass",
+          "path": "/api/futures/funding-rate/vol-weight-history",
+          "required_params": [
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "DERIVATIVES_RISK",
+          "source_category": "funding_rate",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 300,
+          "use": "volume_weighted_funding_rate_for_market_wide_crowding",
+          "source_keys": [
+            "futures_funding_rate_vol_weight_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
         }
       ],
       "LIQUIDATION_RISK": [
         {
-          "endpoint_id": "coinglass_futures_liquidation_aggregated_heatmap_model1",
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_heatmap_model2",
           "provider": "coinglass",
-          "path": "/api/futures/liquidation/aggregated-heatmap/model1",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "path": "/api/futures/liquidation/aggregated-heatmap/model2",
+          "required_params": [
+            "exchange_list",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "LIQUIDATION_RISK",
           "source_category": "liquidation_heatmap",
           "priority": "P2",
           "output_type": "heatmap",
-          "ttl_seconds": 300,
-          "use": "alternate_coin_liquidation_heatmap_model_for_validation",
+          "ttl_seconds": 60,
+          "use": "coin_liquidation_heatmap_primary_for_aggregated_liquidity_zones",
           "source_keys": [
-            "futures_liquidation_aggregated_heatmap_model1"
+            "futures_liquidation_aggregated_heatmap_model2"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
         },
         {
-          "endpoint_id": "coinglass_futures_liquidation_aggregated_heatmap_model3",
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_history",
           "provider": "coinglass",
-          "path": "/api/futures/liquidation/aggregated-heatmap/model3",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
+          "path": "/api/futures/liquidation/aggregated-history",
+          "required_params": [
+            "exchange_list",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "LIQUIDATION_RISK",
+          "source_category": "liquidation",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 30,
+          "use": "coin_liquidation_history_for_market_wide_squeeze_detection",
+          "source_keys": [
+            "futures_liquidation_aggregated_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_map",
+          "provider": "coinglass",
+          "path": "/api/futures/liquidation/aggregated-map",
+          "required_params": [
+            "exchange_list",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "LIQUIDATION_RISK",
+          "source_category": "liquidation_map",
+          "priority": "P2",
+          "output_type": "map",
+          "ttl_seconds": 60,
+          "use": "coin_liquidation_map_for_aggregated_liquidity_clusters",
+          "source_keys": [
+            "futures_liquidation_aggregated_map"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_heatmap_model2",
+          "provider": "coinglass",
+          "path": "/api/futures/liquidation/heatmap/model2",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "LIQUIDATION_RISK",
           "source_category": "liquidation_heatmap",
           "priority": "P2",
           "output_type": "heatmap",
+          "ttl_seconds": 60,
+          "use": "pair_liquidation_heatmap_primary_for_liquidity_zones",
+          "source_keys": [
+            "futures_liquidation_heatmap_model2"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_history",
+          "provider": "coinglass",
+          "path": "/api/futures/liquidation/history",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "LIQUIDATION_RISK",
+          "source_category": "liquidation",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 30,
+          "use": "pair_liquidation_history_for_squeeze_and_stop_hunt_detection",
+          "source_keys": [
+            "futures_liquidation_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_map",
+          "provider": "coinglass",
+          "path": "/api/futures/liquidation/map",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "LIQUIDATION_RISK",
+          "source_category": "liquidation_map",
+          "priority": "P2",
+          "output_type": "map",
+          "ttl_seconds": 60,
+          "use": "pair_liquidation_map_for_nearby_liquidity_clusters",
+          "source_keys": [
+            "futures_liquidation_map"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_order",
+          "provider": "coinglass",
+          "path": "/api/futures/liquidation/order",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "LIQUIDATION_RISK",
+          "source_category": "liquidation",
+          "priority": "P2",
+          "output_type": "time_series",
+          "ttl_seconds": 15,
+          "use": "real_time_liquidation_orders_for_alerts_and_squeeze_validation",
+          "source_keys": [
+            "futures_liquidation_order"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_max_pain",
+          "provider": "coinglass",
+          "path": "/api/futures/liquidation/max-pain",
+          "required_params": [
+            "exchange",
+            "symbol",
+            "interval"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "LIQUIDATION_RISK",
+          "source_category": "liquidation",
+          "priority": "P2",
+          "output_type": "time_series",
           "ttl_seconds": 300,
-          "use": "alternate_coin_liquidation_heatmap_model_for_validation",
+          "use": "liquidation_max_pain_for_magnet_levels_and_risk_zones",
           "source_keys": [
-            "futures_liquidation_aggregated_heatmap_model3"
+            "futures_liquidation_max_pain"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_coin_list",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/coin-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_metadata",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 3600,
-          "use": "liquidation_coin_universe_for_scanner",
-          "source_keys": [
-            "futures_liquidation_coin_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_exchange_list",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/exchange-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_metadata",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 600,
-          "use": "liquidation_by_exchange_context_for_exchange_weighting",
-          "source_keys": [
-            "futures_liquidation_exchange_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_heatmap_model1",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/heatmap/model1",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_heatmap",
-          "priority": "P2",
-          "output_type": "heatmap",
-          "ttl_seconds": 300,
-          "use": "alternate_pair_liquidation_heatmap_model_for_validation",
-          "source_keys": [
-            "futures_liquidation_heatmap_model1"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_futures_liquidation_heatmap_model3",
-          "provider": "coinglass",
-          "path": "/api/futures/liquidation/heatmap/model3",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "LIQUIDATION_RISK",
-          "source_category": "liquidation_heatmap",
-          "priority": "P2",
-          "output_type": "heatmap",
-          "ttl_seconds": 300,
-          "use": "alternate_pair_liquidation_heatmap_model_for_validation",
-          "source_keys": [
-            "futures_liquidation_heatmap_model3"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          }
         }
-      ],
+      ]
+    },
+    "P3": {
       "SPOT_REAL_FLOW": [
         {
-          "endpoint_id": "coinglass_spot_coin_netflow",
+          "endpoint_id": "coinglass_coinbase_premium_index",
           "provider": "coinglass",
-          "path": "/api/spot/coin/netflow",
-          "method": "GET",
+          "path": "/api/coinbase-premium-index",
           "required_params": [],
-          "optional_params": [],
+          "optional_params": [
+            "interval",
+            "start_time",
+            "end_time",
+            "limit"
+          ],
           "family": "SPOT_REAL_FLOW",
-          "source_category": "spot_flow",
-          "priority": "P2",
+          "source_category": "sentiment_premium",
+          "priority": "P3",
           "output_type": "time_series",
           "ttl_seconds": 300,
-          "use": "spot_coin_netflow_for_spot_exchange_inflow_outflow_confirmation",
+          "use": "coinbase_premium_for_us_spot_demand_sentiment",
           "source_keys": [
-            "spot_coin_netflow"
+            "coinbase_premium_index"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_netflow_list",
-          "provider": "coinglass",
-          "path": "/api/spot/netflow-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "SPOT_REAL_FLOW",
-          "source_category": "spot_flow",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 300,
-          "use": "spot_netflow_list_for_exchange_inflow_outflow_alerts",
-          "source_keys": [
-            "spot_netflow_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_spot_volume_footprint_history",
-          "provider": "coinglass",
-          "path": "/api/spot/volume/footprint-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "SPOT_REAL_FLOW",
-          "source_category": "spot_volume_orderflow",
-          "priority": "P2",
-          "output_type": "event_list",
-          "ttl_seconds": 60,
-          "use": "spot_footprint_for_absorption_and_real_spot_buying_or_selling",
-          "source_keys": [
-            "spot_volume_footprint_history"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "interval": "1h",
+            "limit": 5
+          }
         }
       ],
-      "ONCHAIN_EXCHANGE_FLOW": [
+      "ETF_INSTITUTIONAL": [
         {
-          "endpoint_id": "coinglass_exchange_assets",
+          "endpoint_id": "coinglass_bitcoin_etf_aum",
           "provider": "coinglass",
-          "path": "/api/exchange/assets",
-          "method": "GET",
+          "path": "/api/etf/bitcoin/aum",
           "required_params": [],
-          "optional_params": [],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "exchange_flow",
-          "priority": "P2",
+          "optional_params": [
+            "ticker"
+          ],
+          "family": "ETF_INSTITUTIONAL",
+          "source_category": "etf",
+          "priority": "P3",
           "output_type": "time_series",
           "ttl_seconds": 3600,
-          "use": "exchange_assets_for_reserve_and_exchange_health_context",
+          "use": "bitcoin_etf_aum_for_institutional_flow_context",
           "source_keys": [
-            "exchange_assets"
+            "bitcoin_etf_aum"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "ticker": "IBIT"
+          }
         },
         {
-          "endpoint_id": "coinglass_exchange_balance_chart",
+          "endpoint_id": "coinglass_bitcoin_etf_detail",
           "provider": "coinglass",
-          "path": "/api/exchange/balance/chart",
-          "method": "GET",
+          "path": "/api/etf/bitcoin/detail",
           "required_params": [],
-          "optional_params": [],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "exchange_flow",
-          "priority": "P2",
+          "optional_params": [
+            "ticker"
+          ],
+          "family": "ETF_INSTITUTIONAL",
+          "source_category": "etf",
+          "priority": "P3",
           "output_type": "time_series",
           "ttl_seconds": 3600,
-          "use": "exchange_balance_chart_for_reserve_trend_context",
+          "use": "bitcoin_etf_detail_for_ticker_level_institutional_flow_breakdown",
           "source_keys": [
-            "exchange_balance_chart"
+            "bitcoin_etf_detail"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "ticker": "IBIT"
+          }
         },
         {
-          "endpoint_id": "coinglass_exchange_balance_list",
+          "endpoint_id": "coinglass_bitcoin_etf_flow_history",
           "provider": "coinglass",
-          "path": "/api/exchange/balance/list",
-          "method": "GET",
+          "path": "/api/etf/bitcoin/flow-history",
           "required_params": [],
-          "optional_params": [],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "exchange_flow",
-          "priority": "P2",
-          "output_type": "snapshot",
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "ETF_INSTITUTIONAL",
+          "source_category": "etf",
+          "priority": "P3",
+          "output_type": "time_series",
           "ttl_seconds": 3600,
-          "use": "exchange_balance_list_for_exchange_reserve_context",
+          "use": "bitcoin_etf_flows_for_institutional_demand_context",
           "source_keys": [
-            "exchange_balance_list"
+            "bitcoin_etf_flow_history"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {}
         },
         {
-          "endpoint_id": "coinglass_exchange_chain_tx_list",
+          "endpoint_id": "coinglass_bitcoin_etf_net_assets_history",
           "provider": "coinglass",
-          "path": "/api/exchange/chain/tx/list",
-          "method": "GET",
+          "path": "/api/etf/bitcoin/net-assets/history",
           "required_params": [],
-          "optional_params": [],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "exchange_flow",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 300,
-          "use": "exchange_onchain_transfers_for_exchange_inflow_outflow_alerts",
-          "source_keys": [
-            "exchange_chain_tx_list"
+          "optional_params": [
+            "ticker",
+            "start_time",
+            "end_time",
+            "limit"
           ],
-          "param_review_required": true
+          "family": "ETF_INSTITUTIONAL",
+          "source_category": "etf",
+          "priority": "P3",
+          "output_type": "time_series",
+          "ttl_seconds": 3600,
+          "use": "bitcoin_etf_net_assets_for_institutional_aum_trend",
+          "source_keys": [
+            "bitcoin_etf_net_assets_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "ticker": "IBIT"
+          }
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_premium_discount_history",
+          "provider": "coinglass",
+          "path": "/api/etf/bitcoin/premium-discount/history",
+          "required_params": [],
+          "optional_params": [
+            "ticker",
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "ETF_INSTITUTIONAL",
+          "source_category": "etf",
+          "priority": "P3",
+          "output_type": "time_series",
+          "ttl_seconds": 3600,
+          "use": "bitcoin_etf_premium_discount_for_etf_demand_stress",
+          "source_keys": [
+            "bitcoin_etf_premium_discount_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "ticker": "IBIT"
+          }
+        }
+      ],
+      "OPTIONS_CONTEXT": [
+        {
+          "endpoint_id": "coinglass_option_exchange_oi_history",
+          "provider": "coinglass",
+          "path": "/api/option/exchange-oi-history",
+          "required_params": [
+            "symbol",
+            "unit",
+            "range"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "OPTIONS_CONTEXT",
+          "source_category": "options",
+          "priority": "P3",
+          "output_type": "time_series",
+          "ttl_seconds": 3600,
+          "use": "options_open_interest_for_options_positioning_context",
+          "source_keys": [
+            "option_exchange_oi_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "unit": "USD",
+            "range": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_option_exchange_vol_history",
+          "provider": "coinglass",
+          "path": "/api/option/exchange-vol-history",
+          "required_params": [
+            "symbol",
+            "unit",
+            "range"
+          ],
+          "optional_params": [
+            "start_time",
+            "end_time",
+            "limit"
+          ],
+          "family": "OPTIONS_CONTEXT",
+          "source_category": "options",
+          "priority": "P3",
+          "output_type": "time_series",
+          "ttl_seconds": 3600,
+          "use": "options_volume_for_options_activity_context",
+          "source_keys": [
+            "option_exchange_vol_history"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "unit": "USD",
+            "range": "1h",
+            "limit": 5
+          }
+        },
+        {
+          "endpoint_id": "coinglass_option_max_pain",
+          "provider": "coinglass",
+          "path": "/api/option/max-pain",
+          "required_params": [
+            "symbol",
+            "exchange"
+          ],
+          "optional_params": [],
+          "family": "OPTIONS_CONTEXT",
+          "source_category": "options",
+          "priority": "P3",
+          "output_type": "time_series",
+          "ttl_seconds": 3600,
+          "use": "options_max_pain_for_magnet_levels_and_derivatives_context",
+          "source_keys": [
+            "option_max_pain"
+          ],
+          "param_review_required": false,
+          "default_params": {
+            "symbol": "BTC",
+            "exchange": "Deribit"
+          }
         }
       ],
       "STABLECOIN_LIQUIDITY": [
@@ -1763,25 +1751,24 @@
           "endpoint_id": "coinglass_stablecoin_marketcap_history",
           "provider": "coinglass",
           "path": "/api/index/stableCoin-marketCap-history",
-          "method": "GET",
           "required_params": [],
           "optional_params": [],
           "family": "STABLECOIN_LIQUIDITY",
           "source_category": "liquidity_macro",
-          "priority": "P2",
+          "priority": "P3",
           "output_type": "time_series",
           "ttl_seconds": 3600,
           "use": "stablecoin_market_cap_for_crypto_liquidity_context",
           "source_keys": [
             "stablecoin_marketcap_history"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {}
         },
         {
-          "endpoint_id": "cryptoquant_stablecoin_exchange_outflow",
+          "endpoint_id": "cryptoquant_stablecoin_exchange_inflow",
           "provider": "cryptoquant",
-          "path": "/v1/stablecoin/exchange-flows/outflow",
-          "method": "GET",
+          "path": "/v1/stablecoin/exchange-flows/inflow",
           "required_params": [
             "token",
             "exchange",
@@ -1795,263 +1782,124 @@
           ],
           "family": "STABLECOIN_LIQUIDITY",
           "source_category": "stablecoin_exchange_flows",
-          "priority": "P2",
+          "priority": "P3",
+          "output_type": "time_series",
+          "ttl_seconds": 120,
+          "use": "Stablecoins flowing into exchanges for potential buying power.",
+          "source_keys": [
+            "stablecoin_exchange_inflow"
+          ],
+          "default_params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_outflow",
+          "provider": "cryptoquant",
+          "path": "/v1/stablecoin/exchange-flows/outflow",
+          "required_params": [
+            "token",
+            "exchange",
+            "window"
+          ],
+          "optional_params": [
+            "from",
+            "to",
+            "limit",
+            "format"
+          ],
+          "family": "STABLECOIN_LIQUIDITY",
+          "source_category": "stablecoin_exchange_flows",
+          "priority": "P3",
           "output_type": "time_series",
           "ttl_seconds": 300,
           "use": "Stablecoins flowing out of exchanges; reduces immediate exchange dry powder.",
           "source_keys": [
             "stablecoin_exchange_outflow"
           ],
-          "default_params": {},
-          "param_review_required": true,
+          "default_params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
           "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        }
-      ],
-      "ETF_INSTITUTIONAL": [
-        {
-          "endpoint_id": "coinglass_bitcoin_etf_aum",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/aum",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "bitcoin_etf_aum_for_institutional_flow_context",
-          "source_keys": [
-            "bitcoin_etf_aum"
-          ],
-          "param_review_required": true
         },
         {
-          "endpoint_id": "coinglass_bitcoin_etf_detail",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/detail",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "bitcoin_etf_detail_for_ticker_level_institutional_flow_breakdown",
-          "source_keys": [
-            "bitcoin_etf_detail"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_etf_flow_history",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/flow-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "bitcoin_etf_flows_for_institutional_demand_context",
-          "source_keys": [
-            "bitcoin_etf_flow_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_etf_list",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P2",
-          "output_type": "snapshot",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_etf_catalog_for_institutional_flow_context",
-          "source_keys": [
-            "bitcoin_etf_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_etf_net_assets_history",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/net-assets/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "bitcoin_etf_net_assets_for_institutional_aum_trend",
-          "source_keys": [
-            "bitcoin_etf_net_assets_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_etf_premium_discount_history",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/premium-discount/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "bitcoin_etf_premium_discount_for_etf_demand_stress",
-          "source_keys": [
-            "bitcoin_etf_premium_discount_history"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "OPTIONS_CONTEXT": [
-        {
-          "endpoint_id": "coinglass_option_exchange_oi_history",
-          "provider": "coinglass",
-          "path": "/api/option/exchange-oi-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "OPTIONS_CONTEXT",
-          "source_category": "options",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "options_open_interest_for_options_positioning_context",
-          "source_keys": [
-            "option_exchange_oi_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_option_exchange_vol_history",
-          "provider": "coinglass",
-          "path": "/api/option/exchange-vol-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "OPTIONS_CONTEXT",
-          "source_category": "options",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "options_volume_for_options_activity_context",
-          "source_keys": [
-            "option_exchange_vol_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_option_max_pain",
-          "provider": "coinglass",
-          "path": "/api/option/max-pain",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "OPTIONS_CONTEXT",
-          "source_category": "options",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "options_max_pain_for_magnet_levels_and_derivatives_context",
-          "source_keys": [
-            "option_max_pain"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "MARKET_REGIME": [
-        {
-          "endpoint_id": "coinglass_bitcoin_lth_sopr",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-lth-sopr",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "holder_profitability",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "long_term_holder_sopr_for_structural_selling_pressure",
-          "source_keys": [
-            "bitcoin_lth_sopr"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_net_unrealized_profit_loss",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-net-unrealized-profit-loss",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "holder_profitability",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "nupl_for_market_cycle_and_holder_profitability_context",
-          "source_keys": [
-            "bitcoin_net_unrealized_profit_loss"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_sth_sopr",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-sth-sopr",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "holder_profitability",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "short_term_holder_sopr_for_profit_taking_pressure",
-          "source_keys": [
-            "bitcoin_sth_sopr"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "cryptoquant_btc_coinbase_premium_index",
+          "endpoint_id": "cryptoquant_stablecoin_exchange_netflow",
           "provider": "cryptoquant",
-          "path": "/api/v1/btc/market-indicator/coinbase-premium-index",
-          "method": "GET",
+          "path": "/v1/stablecoin/exchange-flows/netflow",
           "required_params": [
-            "symbol",
-            "interval"
+            "token",
+            "exchange",
+            "window"
           ],
           "optional_params": [
-            "start_time",
-            "end_time",
-            "limit"
+            "from",
+            "to",
+            "limit",
+            "format"
           ],
-          "family": "MARKET_REGIME",
-          "source_category": "coinbase_premium",
-          "priority": "P2",
+          "family": "STABLECOIN_LIQUIDITY",
+          "source_category": "stablecoin_exchange_flows",
+          "priority": "P3",
           "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "cryptoquant_coinbase_premium_index_for_us_institutional_spot_demand_confirmation",
+          "ttl_seconds": 120,
+          "use": "Net stablecoin flow into or out of exchanges.",
           "source_keys": [
-            "cryptoquant_btc_coinbase_premium_index"
+            "stablecoin_exchange_netflow"
           ],
-          "param_review_required": true
+          "default_params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_reserve",
+          "provider": "cryptoquant",
+          "path": "/v1/stablecoin/exchange-flows/reserve",
+          "required_params": [
+            "token",
+            "exchange",
+            "window"
+          ],
+          "optional_params": [
+            "from",
+            "to",
+            "limit",
+            "format"
+          ],
+          "family": "STABLECOIN_LIQUIDITY",
+          "source_category": "stablecoin_exchange_flows",
+          "priority": "P3",
+          "output_type": "time_series",
+          "ttl_seconds": 120,
+          "use": "Stablecoin reserves held by exchanges for dry-powder liquidity context.",
+          "source_keys": [
+            "stablecoin_exchange_reserve"
+          ],
+          "default_params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
         }
       ],
       "ALERTS_EVENTS": [
@@ -2059,266 +1907,53 @@
           "endpoint_id": "coinglass_article_list",
           "provider": "coinglass",
           "path": "/api/article/list",
-          "method": "GET",
           "required_params": [],
-          "optional_params": [],
+          "optional_params": [
+            "language",
+            "page",
+            "per_page",
+            "start_time",
+            "end_time"
+          ],
           "family": "ALERTS_EVENTS",
           "source_category": "news_sentiment",
-          "priority": "P2",
+          "priority": "P3",
           "output_type": "snapshot",
           "ttl_seconds": 1800,
           "use": "news_context_for_agent_explanations_and_event_alerts",
           "source_keys": [
             "article_list"
           ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "language": "en",
+            "page": 1,
+            "per_page": 50
+          }
         },
         {
           "endpoint_id": "coinglass_economic_data_calendar",
           "provider": "coinglass",
           "path": "/api/calendar/economic-data",
-          "method": "GET",
           "required_params": [],
-          "optional_params": [],
+          "optional_params": [
+            "language",
+            "start_time",
+            "end_time"
+          ],
           "family": "ALERTS_EVENTS",
           "source_category": "macro_calendar",
-          "priority": "P2",
+          "priority": "P3",
           "output_type": "event_list",
           "ttl_seconds": 3600,
           "use": "macro_calendar_for_event_risk_and_intraday_context",
           "source_keys": [
             "economic_data_calendar"
           ],
-          "param_review_required": true
-        }
-      ],
-      "MINER_FLOW": [
-        {
-          "endpoint_id": "cryptoquant_btc_miner_outflow",
-          "provider": "cryptoquant",
-          "path": "/v1/btc/miner-flows/outflow",
-          "method": "GET",
-          "required_params": [
-            "miner",
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "MINER_FLOW",
-          "source_category": "miner_flows",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "BTC flowing out of miner wallets for miner sell pressure context.",
-          "source_keys": [
-            "btc_miner_outflow"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        },
-        {
-          "endpoint_id": "cryptoquant_btc_mpi",
-          "provider": "cryptoquant",
-          "path": "/v1/btc/flow-indicator/mpi",
-          "method": "GET",
-          "required_params": [
-            "window"
-          ],
-          "optional_params": [
-            "from",
-            "to",
-            "limit",
-            "format"
-          ],
-          "family": "MINER_FLOW",
-          "source_category": "miner_indicator",
-          "priority": "P2",
-          "output_type": "time_series",
-          "ttl_seconds": 300,
-          "use": "Miners Position Index for miner distribution risk context.",
-          "source_keys": [
-            "btc_mpi"
-          ],
-          "default_params": {},
-          "param_review_required": true,
-          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
-        }
-      ]
-    },
-    "P3": {
-      "PRICE_MARKET": [
-        {
-          "endpoint_id": "coinglass_spot_coins_markets",
-          "provider": "coinglass",
-          "path": "/api/spot/coins-markets",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "PRICE_MARKET",
-          "source_category": "market_snapshot",
-          "priority": "P3",
-          "output_type": "snapshot",
-          "ttl_seconds": 300,
-          "use": "spot_coin_market_scanner_for_multi_asset_research",
-          "source_keys": [
-            "spot_coins_markets"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "ONCHAIN_EXCHANGE_FLOW": [
-        {
-          "endpoint_id": "coinglass_exchange_assets_transparency_list",
-          "provider": "coinglass",
-          "path": "/api/exchange_assets_transparency/list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ONCHAIN_EXCHANGE_FLOW",
-          "source_category": "exchange_transparency",
-          "priority": "P3",
-          "output_type": "snapshot",
-          "ttl_seconds": 86400,
-          "use": "exchange_transparency_research_and_counterparty_risk_context",
-          "source_keys": [
-            "exchange_assets_transparency_list"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "ETF_INSTITUTIONAL": [
-        {
-          "endpoint_id": "coinglass_bitcoin_etf_history",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_etf_history_for_research_and_dashboard_context",
-          "source_keys": [
-            "bitcoin_etf_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_etf_price_history",
-          "provider": "coinglass",
-          "path": "/api/etf/bitcoin/price/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_etf_price_history_for_etf_price_context",
-          "source_keys": [
-            "bitcoin_etf_price_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_grayscale_holdings_list",
-          "provider": "coinglass",
-          "path": "/api/grayscale/holdings-list",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "grayscale",
-          "priority": "P3",
-          "output_type": "snapshot",
-          "ttl_seconds": 86400,
-          "use": "grayscale_holdings_for_legacy_institutional_context",
-          "source_keys": [
-            "grayscale_holdings_list"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_grayscale_premium_history",
-          "provider": "coinglass",
-          "path": "/api/grayscale/premium-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "grayscale",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "grayscale_premium_history_for_legacy_institutional_context",
-          "source_keys": [
-            "grayscale_premium_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_hong_kong_bitcoin_etf_flow_history",
-          "provider": "coinglass",
-          "path": "/api/hk-etf/bitcoin/flow-history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "ETF_INSTITUTIONAL",
-          "source_category": "etf",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "hong_kong_bitcoin_etf_flow_history_for_regional_institutional_context",
-          "source_keys": [
-            "hong_kong_bitcoin_etf_flow_history"
-          ],
-          "param_review_required": true
-        }
-      ],
-      "OPTIONS_CONTEXT": [
-        {
-          "endpoint_id": "coinglass_option_info",
-          "provider": "coinglass",
-          "path": "/api/option/info",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "OPTIONS_CONTEXT",
-          "source_category": "options_metadata",
-          "priority": "P3",
-          "output_type": "snapshot",
-          "ttl_seconds": 86400,
-          "use": "options_contract_metadata_for_later_options_module",
-          "source_keys": [
-            "option_info"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_option_vs_futures_oi_ratio",
-          "provider": "coinglass",
-          "path": "/api/index/option-vs-futures-oi-ratio",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "OPTIONS_CONTEXT",
-          "source_category": "derivatives_regime",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "options_vs_futures_oi_ratio_for_derivatives_regime_research",
-          "source_keys": [
-            "option_vs_futures_oi_ratio"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {
+            "language": "en"
+          }
         }
       ],
       "MARKET_REGIME": [
@@ -2326,7 +1961,6 @@
           "endpoint_id": "coinglass_altcoin_season_index",
           "provider": "coinglass",
           "path": "/api/index/altcoin-season",
-          "method": "GET",
           "required_params": [],
           "optional_params": [],
           "family": "MARKET_REGIME",
@@ -2338,67 +1972,13 @@
           "source_keys": [
             "altcoin_season_index"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_active_addresses",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-active-addresses",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "network_activity",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "active_addresses_for_network_activity_research",
-          "source_keys": [
-            "bitcoin_active_addresses"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_bubble_index",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin/bubble-index",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "cycle_indicator",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_bubble_index_for_cycle_risk_research",
-          "source_keys": [
-            "bitcoin_bubble_index"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_correlation",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-correlation",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "macro_correlation",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_correlation_for_macro_asset_context",
-          "source_keys": [
-            "bitcoin_correlation"
-          ],
-          "param_review_required": true
+          "param_review_required": false,
+          "default_params": {}
         },
         {
           "endpoint_id": "coinglass_bitcoin_dominance",
           "provider": "coinglass",
           "path": "/api/index/bitcoin-dominance",
-          "method": "GET",
           "required_params": [],
           "optional_params": [],
           "family": "MARKET_REGIME",
@@ -2410,342 +1990,78 @@
           "source_keys": [
             "bitcoin_dominance"
           ],
-          "param_review_required": true
-        },
+          "param_review_required": false,
+          "default_params": {}
+        }
+      ],
+      "MINER_FLOW": [
         {
-          "endpoint_id": "coinglass_bitcoin_long_term_holder_supply",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-long-term-holder-supply",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "holder_supply",
+          "endpoint_id": "cryptoquant_btc_mpi",
+          "provider": "cryptoquant",
+          "path": "/v1/btc/flow-indicator/mpi",
+          "required_params": [
+            "window"
+          ],
+          "optional_params": [
+            "from",
+            "to",
+            "limit",
+            "format"
+          ],
+          "family": "MINER_FLOW",
+          "source_category": "miner_indicator",
           "priority": "P3",
           "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "long_term_holder_supply_for_holder_rotation_context",
+          "ttl_seconds": 300,
+          "use": "Miners Position Index for miner distribution risk context.",
           "source_keys": [
-            "bitcoin_long_term_holder_supply"
+            "btc_mpi"
           ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_lth_realized_price",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-lth-realized-price",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "holder_cost_basis",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "long_term_holder_realized_price_for_cycle_context",
-          "source_keys": [
-            "bitcoin_lth_realized_price"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_macro_oscillator",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-macro-oscillator",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "macro_indicator",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_macro_oscillator_for_cycle_research",
-          "source_keys": [
-            "bitcoin_macro_oscillator"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_new_addresses",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-new-addresses",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "network_activity",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "new_addresses_for_network_growth_research",
-          "source_keys": [
-            "bitcoin_new_addresses"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_reserve_risk",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-reserve-risk",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "cycle_indicator",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "reserve_risk_for_long_term_cycle_research",
-          "source_keys": [
-            "bitcoin_reserve_risk"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_rhodl_ratio",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-rhodl-ratio",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "cycle_indicator",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "rhodl_ratio_for_cycle_research",
-          "source_keys": [
-            "bitcoin_rhodl_ratio"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_short_term_holder_supply",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-short-term-holder-supply",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "holder_supply",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "short_term_holder_supply_for_holder_rotation_context",
-          "source_keys": [
-            "bitcoin_short_term_holder_supply"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_sth_realized_price",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-sth-realized-price",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "holder_cost_basis",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "short_term_holder_realized_price_for_cycle_context",
-          "source_keys": [
-            "bitcoin_sth_realized_price"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_vs_global_m2_growth",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-vs-global-m2-growth",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "macro_liquidity",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_vs_global_m2_growth_for_macro_liquidity_research",
-          "source_keys": [
-            "bitcoin_vs_global_m2_growth"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bitcoin_vs_us_m2_growth",
-          "provider": "coinglass",
-          "path": "/api/index/bitcoin-vs-us-m2-growth",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "macro_liquidity",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bitcoin_vs_us_m2_growth_for_us_liquidity_research",
-          "source_keys": [
-            "bitcoin_vs_us_m2_growth"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_borrow_interest_rate_history",
-          "provider": "coinglass",
-          "path": "/api/borrow-interest-rate/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "credit_market",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "borrow_interest_rate_for_credit_stress_research",
-          "source_keys": [
-            "borrow_interest_rate_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_bull_market_peak_indicator",
-          "provider": "coinglass",
-          "path": "/api/bull-market-peak-indicator",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "cycle_indicator",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "bull_market_peak_indicator_for_cycle_research",
-          "source_keys": [
-            "bull_market_peak_indicator"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_cdri_index_history",
-          "provider": "coinglass",
-          "path": "/api/futures/cdri-index/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "index_research",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "cdri_index_for_research_context",
-          "source_keys": [
-            "cdri_index_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_cgdi_index_history",
-          "provider": "coinglass",
-          "path": "/api/futures/cgdi-index/history",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "index_research",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 3600,
-          "use": "cgdi_index_for_research_context",
-          "source_keys": [
-            "cgdi_index_history"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_pi_cycle_indicator",
-          "provider": "coinglass",
-          "path": "/api/index/pi-cycle-indicator",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "cycle_indicator",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "pi_cycle_top_indicator_for_cycle_research",
-          "source_keys": [
-            "pi_cycle_indicator"
-          ],
-          "param_review_required": true
-        },
-        {
-          "endpoint_id": "coinglass_puell_multiple",
-          "provider": "coinglass",
-          "path": "/api/index/puell-multiple",
-          "method": "GET",
-          "required_params": [],
-          "optional_params": [],
-          "family": "MARKET_REGIME",
-          "source_category": "cycle_indicator",
-          "priority": "P3",
-          "output_type": "time_series",
-          "ttl_seconds": 86400,
-          "use": "puell_multiple_for_miner_cycle_research",
-          "source_keys": [
-            "puell_multiple"
-          ],
-          "param_review_required": true
+          "default_params": {
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "param_review_required": false,
+          "notes": "Path and params follow the prior CryptoQuant architecture summary and should be validated with the active CryptoQuant plan/documentation before production use."
         }
       ]
     }
   },
   "summary_counts": {
-    "total_endpoints": 136,
+    "total_endpoints": 67,
     "by_priority_family": {
       "P1": {
-        "PRICE_MARKET": 3,
-        "DERIVATIVES_RISK": 15,
-        "ORDER_FLOW": 7,
-        "LIQUIDITY_BOOK": 3,
-        "WHALES_LARGE_PLAYERS": 7,
-        "LIQUIDATION_RISK": 8,
-        "SPOT_REAL_FLOW": 5,
-        "MARKET_REGIME": 1,
-        "ONCHAIN_EXCHANGE_FLOW": 4,
-        "STABLECOIN_LIQUIDITY": 3
+        "PRICE_MARKET": 2,
+        "DERIVATIVES_RISK": 1,
+        "ORDER_FLOW": 3,
+        "SPOT_REAL_FLOW": 3,
+        "LIQUIDITY_BOOK": 2,
+        "WHALES_LARGE_PLAYERS": 3
       },
       "P2": {
-        "PRICE_MARKET": 3,
-        "DERIVATIVES_RISK": 4,
-        "ORDER_FLOW": 2,
-        "LIQUIDITY_BOOK": 3,
-        "WHALES_LARGE_PLAYERS": 6,
-        "LIQUIDATION_RISK": 6,
+        "LIQUIDITY_BOOK": 4,
+        "WHALES_LARGE_PLAYERS": 5,
+        "ORDER_FLOW": 3,
         "SPOT_REAL_FLOW": 3,
         "ONCHAIN_EXCHANGE_FLOW": 4,
-        "STABLECOIN_LIQUIDITY": 2,
-        "ETF_INSTITUTIONAL": 6,
-        "OPTIONS_CONTEXT": 3,
-        "MARKET_REGIME": 4,
-        "ALERTS_EVENTS": 2,
-        "MINER_FLOW": 2
+        "DERIVATIVES_RISK": 7,
+        "LIQUIDATION_RISK": 8
       },
       "P3": {
-        "PRICE_MARKET": 1,
-        "ONCHAIN_EXCHANGE_FLOW": 1,
+        "SPOT_REAL_FLOW": 1,
         "ETF_INSTITUTIONAL": 5,
-        "OPTIONS_CONTEXT": 2,
-        "MARKET_REGIME": 21
+        "OPTIONS_CONTEXT": 3,
+        "STABLECOIN_LIQUIDITY": 5,
+        "ALERTS_EVENTS": 2,
+        "MARKET_REGIME": 2,
+        "MINER_FLOW": 1
       }
     },
     "by_provider": {
-      "coinglass": 123,
-      "cryptoquant": 13
+      "coinglass": 58,
+      "cryptoquant": 9
     },
-    "cryptoquant_endpoint_count": 13
+    "cryptoquant_endpoint_count": 9
   }
 }

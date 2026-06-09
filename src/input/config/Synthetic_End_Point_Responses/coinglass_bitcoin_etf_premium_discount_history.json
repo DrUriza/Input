@@ -1,0 +1,72 @@
+{
+  "endpoint_id": "coinglass_bitcoin_etf_premium_discount_history",
+  "provider": "coinglass",
+  "priority": "P3",
+  "family": "ETF_INSTITUTIONAL",
+  "source_category": "etf",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/premium-discount/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "ticker": "IBIT"
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "date": "2026-06-05",
+        "ticker": "IBIT",
+        "premium_discount_pct": -0.06,
+        "nav_usd": 58.1,
+        "market_price_usd": 58.07
+      },
+      {
+        "date": "2026-06-06",
+        "ticker": "IBIT",
+        "premium_discount_pct": -0.042,
+        "nav_usd": 58.41,
+        "market_price_usd": 58.39
+      },
+      {
+        "date": "2026-06-07",
+        "ticker": "IBIT",
+        "premium_discount_pct": -0.024,
+        "nav_usd": 58.72,
+        "market_price_usd": 58.71
+      },
+      {
+        "date": "2026-06-08",
+        "ticker": "IBIT",
+        "premium_discount_pct": -0.006,
+        "nav_usd": 59.03,
+        "market_price_usd": 59.03
+      },
+      {
+        "date": "2026-06-09",
+        "ticker": "IBIT",
+        "premium_discount_pct": 0.012,
+        "nav_usd": 59.34,
+        "market_price_usd": 59.35
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"date\":\"2026-06-05\",\"ticker\":\"IBIT\",\"premium_discount_pct\":-0.06,\"nav_usd\":58.1,\"market_price_usd\":58.07},{\"date\":\"2026-06-06\",\"ticker\":\"IBIT\",\"premium_discount_pct\":-0.042,\"nav_usd\":58.41,\"market_price_usd\":58.39},{\"date\":\"2026-06-07\",\"ticker\":\"IBIT\",\"premium_discount_pct\":-0.024,\"nav_usd\":58.72,\"market_price_usd\":58.71},{\"date\":\"2026-06-08\",\"ticker\":\"IBIT\",\"premium_discount_pct\":-0.006,\"nav_usd\":59.03,\"market_price_usd\":59.03},{\"date\":\"2026-06-09\",\"ticker\":\"IBIT\",\"premium_discount_pct\":0.012,\"nav_usd\":59.34,\"market_price_usd\":59.35}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 3600,
+    "priority": "P3",
+    "family": "ETF_INSTITUTIONAL",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

@@ -1,0 +1,94 @@
+{
+  "endpoint_id": "coinglass_spot_coin_netflow",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "SPOT_REAL_FLOW",
+  "source_category": "spot_flow",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/spot/coin/netflow",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange_list": "Binance",
+    "symbol": "BTC",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "inflow": 820,
+        "outflow": 910,
+        "netflow": -90,
+        "inflow_usd": 56219200.0,
+        "outflow_usd": 62389600.0,
+        "netflow_usd": -6170400.0
+      },
+      {
+        "time": 1780995351000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "inflow": 860,
+        "outflow": 965,
+        "netflow": -105,
+        "inflow_usd": 59212315.8,
+        "outflow_usd": 66441726.45,
+        "netflow_usd": -7229410.65
+      },
+      {
+        "time": 1780998951000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "inflow": 900,
+        "outflow": 1020,
+        "netflow": -120,
+        "inflow_usd": 62169561.0,
+        "outflow_usd": 70458835.8,
+        "netflow_usd": -8289274.8
+      },
+      {
+        "time": 1781002551000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "inflow": 940,
+        "outflow": 1075,
+        "netflow": -135,
+        "inflow_usd": 65078080.0,
+        "outflow_usd": 74424400.0,
+        "netflow_usd": -9346320.0
+      },
+      {
+        "time": 1781006151000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "inflow": 980,
+        "outflow": 1130,
+        "netflow": -150,
+        "inflow_usd": 67988156.6,
+        "outflow_usd": 78394507.1,
+        "netflow_usd": -10406350.5
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"inflow\":820,\"outflow\":910,\"netflow\":-90,\"inflow_usd\":56219200.0,\"outflow_usd\":62389600.0,\"netflow_usd\":-6170400.0},{\"time\":1780995351000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"inflow\":860,\"outflow\":965,\"netflow\":-105,\"inflow_usd\":59212315.8,\"outflow_usd\":66441726.45,\"netflow_usd\":-7229410.65},{\"time\":1780998951000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"inflow\":900,\"outflow\":1020,\"netflow\":-120,\"inflow_usd\":62169561.0,\"outflow_usd\":70458835.8,\"netflow_usd\":-8289274.8},{\"time\":1781002551000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"inflow\":940,\"outflow\":1075,\"netflow\":-135,\"inflow_usd\":65078080.0,\"outflow_usd\":74424400.0,\"netflow_usd\":-9346320.0},{\"time\":1781006151000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"inflow\":980,\"outflow\":1130,\"netflow\":-150,\"inflow_usd\":67988156.6,\"outflow_usd\":78394507.1,\"netflow_usd\":-10406350.5}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 300,
+    "priority": "P2",
+    "family": "SPOT_REAL_FLOW",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

@@ -1,0 +1,67 @@
+{
+  "endpoint_id": "coinglass_bitcoin_etf_net_assets_history",
+  "provider": "coinglass",
+  "priority": "P3",
+  "family": "ETF_INSTITUTIONAL",
+  "source_category": "etf",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/net-assets/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "ticker": "IBIT"
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "date": "2026-06-05",
+        "ticker": "IBIT",
+        "net_assets_usd": 22000000000,
+        "market_share_pct": 36.5
+      },
+      {
+        "date": "2026-06-06",
+        "ticker": "IBIT",
+        "net_assets_usd": 22150000000,
+        "market_share_pct": 36.8
+      },
+      {
+        "date": "2026-06-07",
+        "ticker": "IBIT",
+        "net_assets_usd": 22300000000,
+        "market_share_pct": 37.1
+      },
+      {
+        "date": "2026-06-08",
+        "ticker": "IBIT",
+        "net_assets_usd": 22450000000,
+        "market_share_pct": 37.4
+      },
+      {
+        "date": "2026-06-09",
+        "ticker": "IBIT",
+        "net_assets_usd": 22600000000,
+        "market_share_pct": 37.7
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"date\":\"2026-06-05\",\"ticker\":\"IBIT\",\"net_assets_usd\":22000000000,\"market_share_pct\":36.5},{\"date\":\"2026-06-06\",\"ticker\":\"IBIT\",\"net_assets_usd\":22150000000,\"market_share_pct\":36.8},{\"date\":\"2026-06-07\",\"ticker\":\"IBIT\",\"net_assets_usd\":22300000000,\"market_share_pct\":37.1},{\"date\":\"2026-06-08\",\"ticker\":\"IBIT\",\"net_assets_usd\":22450000000,\"market_share_pct\":37.4},{\"date\":\"2026-06-09\",\"ticker\":\"IBIT\",\"net_assets_usd\":22600000000,\"market_share_pct\":37.7}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 3600,
+    "priority": "P3",
+    "family": "ETF_INSTITUTIONAL",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

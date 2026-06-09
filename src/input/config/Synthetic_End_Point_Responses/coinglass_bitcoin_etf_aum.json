@@ -1,0 +1,72 @@
+{
+  "endpoint_id": "coinglass_bitcoin_etf_aum",
+  "provider": "coinglass",
+  "priority": "P3",
+  "family": "ETF_INSTITUTIONAL",
+  "source_category": "etf",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/aum",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "ticker": "IBIT"
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "date": "2026-06-05",
+        "ticker": "IBIT",
+        "aum_usd": 18500000000,
+        "btc_holdings": 285000,
+        "nav_per_share": 58.2
+      },
+      {
+        "date": "2026-06-06",
+        "ticker": "IBIT",
+        "aum_usd": 18620000000,
+        "btc_holdings": 286300,
+        "nav_per_share": 58.55
+      },
+      {
+        "date": "2026-06-07",
+        "ticker": "IBIT",
+        "aum_usd": 18740000000,
+        "btc_holdings": 287600,
+        "nav_per_share": 58.9
+      },
+      {
+        "date": "2026-06-08",
+        "ticker": "IBIT",
+        "aum_usd": 18860000000,
+        "btc_holdings": 288900,
+        "nav_per_share": 59.25
+      },
+      {
+        "date": "2026-06-09",
+        "ticker": "IBIT",
+        "aum_usd": 18980000000,
+        "btc_holdings": 290200,
+        "nav_per_share": 59.6
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"date\":\"2026-06-05\",\"ticker\":\"IBIT\",\"aum_usd\":18500000000,\"btc_holdings\":285000,\"nav_per_share\":58.2},{\"date\":\"2026-06-06\",\"ticker\":\"IBIT\",\"aum_usd\":18620000000,\"btc_holdings\":286300,\"nav_per_share\":58.55},{\"date\":\"2026-06-07\",\"ticker\":\"IBIT\",\"aum_usd\":18740000000,\"btc_holdings\":287600,\"nav_per_share\":58.9},{\"date\":\"2026-06-08\",\"ticker\":\"IBIT\",\"aum_usd\":18860000000,\"btc_holdings\":288900,\"nav_per_share\":59.25},{\"date\":\"2026-06-09\",\"ticker\":\"IBIT\",\"aum_usd\":18980000000,\"btc_holdings\":290200,\"nav_per_share\":59.6}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 3600,
+    "priority": "P3",
+    "family": "ETF_INSTITUTIONAL",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

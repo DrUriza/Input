@@ -1,0 +1,74 @@
+{
+  "endpoint_id": "coinglass_futures_funding_rate_oi_weight_history",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "DERIVATIVES_RISK",
+  "source_category": "funding_rate",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/oi-weight-history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "symbol": "BTC",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "symbol": "BTC",
+        "exchange": null,
+        "oi_weighted_funding_rate": 7e-05,
+        "annualized_rate": 0.07665
+      },
+      {
+        "time": 1780995351000,
+        "symbol": "BTC",
+        "exchange": null,
+        "oi_weighted_funding_rate": 8.5e-05,
+        "annualized_rate": 0.093075
+      },
+      {
+        "time": 1780998951000,
+        "symbol": "BTC",
+        "exchange": null,
+        "oi_weighted_funding_rate": 0.0001,
+        "annualized_rate": 0.1095
+      },
+      {
+        "time": 1781002551000,
+        "symbol": "BTC",
+        "exchange": null,
+        "oi_weighted_funding_rate": 0.000115,
+        "annualized_rate": 0.125925
+      },
+      {
+        "time": 1781006151000,
+        "symbol": "BTC",
+        "exchange": null,
+        "oi_weighted_funding_rate": 0.00013,
+        "annualized_rate": 0.14235
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"symbol\":\"BTC\",\"exchange\":null,\"oi_weighted_funding_rate\":7e-05,\"annualized_rate\":0.07665},{\"time\":1780995351000,\"symbol\":\"BTC\",\"exchange\":null,\"oi_weighted_funding_rate\":8.5e-05,\"annualized_rate\":0.093075},{\"time\":1780998951000,\"symbol\":\"BTC\",\"exchange\":null,\"oi_weighted_funding_rate\":0.0001,\"annualized_rate\":0.1095},{\"time\":1781002551000,\"symbol\":\"BTC\",\"exchange\":null,\"oi_weighted_funding_rate\":0.000115,\"annualized_rate\":0.125925},{\"time\":1781006151000,\"symbol\":\"BTC\",\"exchange\":null,\"oi_weighted_funding_rate\":0.00013,\"annualized_rate\":0.14235}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 300,
+    "priority": "P2",
+    "family": "DERIVATIVES_RISK",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

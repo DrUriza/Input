@@ -1,17 +1,16 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Any, Mapping
 
 import requests
 
-from ..processing.raw_response_contracts import EndpointSpecContract, RawResponseContract
+from input.processing.raw_response_contracts import EndpointSpecContract, RawResponseContract
 
 
-@dataclass(frozen=True)
 class RequestRetryPolicy:
-    attempts: int = 2
-    retry_status_codes: tuple[int, ...] = (429, 500, 502, 503, 504)
+    def __init__(self, attempts: int = 1, retry_status_codes: tuple[int, ...] = (429, 500, 502, 503, 504)) -> None:
+        self.attempts = attempts
+        self.retry_status_codes = retry_status_codes
 
 
 class BaseApiClient:
@@ -20,29 +19,35 @@ class BaseApiClient:
     def __init__(
         self,
         base_url: str,
-        api_key: str | None = None,
+        api_key: str,
         timeout: int = 20,
         default_headers: Mapping[str, str] | None = None,
-        retry_policy: RequestRetryPolicy | None = None,
     ) -> None:
         self.base_url = base_url.rstrip("/")
         self.api_key = api_key
         self.timeout = timeout
         self.default_headers = dict(default_headers or {})
-        self.retry_policy = retry_policy or RequestRetryPolicy()
         self.session = requests.Session()
+        self.retry_policy = RequestRetryPolicy()
+
+    def build_url(self, path: str = "") -> str:
+        if not path:
+            return self.base_url
+        return f"{self.base_url}{path if path.startswith('/') else '/' + path}"
 
     def build_headers(self, extra_headers: Mapping[str, str] | None = None) -> dict[str, str]:
-        headers = {"Accept": "application/json", **self.default_headers}
-        if self.api_key:
-            headers.setdefault("CG-API-KEY", self.api_key)
-            headers.setdefault("X-API-KEY", self.api_key)
+        headers = dict(self.default_headers)
         if extra_headers:
             headers.update(extra_headers)
         return headers
 
-    def build_url(self, path: str) -> str:
-        return f"{self.base_url}{path if path.startswith('/') else '/' + path}"
+    def describe_connection(self) -> dict[str, str | int | bool]:
+        return {
+            "provider": self.provider_name,
+            "base_url": self.base_url,
+            "timeout": self.timeout,
+            "has_api_key": bool(self.api_key),
+        }
 
     def fetch_raw(self, endpoint: EndpointSpecContract, params: Mapping[str, Any] | None = None) -> RawResponseContract:
         if endpoint.provider != self.provider_name:
@@ -67,7 +72,7 @@ class BaseApiClient:
                 last_exception = exc
                 continue
 
-            if response.ok or response.status_code not in self.retry_policy.retry_status_codes or attempt == self.retry_policy.attempts:
+            if response.ok or response.status_code not in self.retry_policy.retry_status_codes:
                 break
 
         if response is None:
@@ -75,11 +80,10 @@ class BaseApiClient:
             raise RuntimeError(f"Transport failure for {endpoint.endpoint_id}: {last_exception}") from last_exception
 
         data: Any = None
-        if response.ok:
-            try:
-                data = response.json()
-            except ValueError:
-                data = None
+        try:
+            data = response.json()
+        except ValueError:
+            data = None
 
         return RawResponseContract(
             endpoint_id=endpoint.endpoint_id,

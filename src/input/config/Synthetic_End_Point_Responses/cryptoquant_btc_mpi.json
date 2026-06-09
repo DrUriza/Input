@@ -1,0 +1,69 @@
+{
+  "endpoint_id": "cryptoquant_btc_mpi",
+  "provider": "cryptoquant",
+  "priority": "P3",
+  "family": "MINER_FLOW",
+  "source_category": "miner_indicator",
+  "output_type": "time_series",
+  "url": "https://api.cryptoquant.com/v1/btc/flow-indicator/mpi",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "window": "day",
+    "limit": 5,
+    "format": "json"
+  },
+  "data": {
+    "status": {
+      "code": 200,
+      "message": "success"
+    },
+    "result": {
+      "window": "day",
+      "data": [
+        {
+          "date": "2026-06-05",
+          "mpi": 1.12,
+          "miner_outflow_total": 1450
+        },
+        {
+          "date": "2026-06-06",
+          "mpi": 1.2,
+          "miner_outflow_total": 1525
+        },
+        {
+          "date": "2026-06-07",
+          "mpi": 1.28,
+          "miner_outflow_total": 1600
+        },
+        {
+          "date": "2026-06-08",
+          "mpi": 1.36,
+          "miner_outflow_total": 1675
+        },
+        {
+          "date": "2026-06-09",
+          "mpi": 1.44,
+          "miner_outflow_total": 1750
+        }
+      ]
+    }
+  },
+  "text": "{\"status\":{\"code\":200,\"message\":\"success\"},\"result\":{\"window\":\"day\",\"data\":[{\"date\":\"2026-06-05\",\"mpi\":1.12,\"miner_outflow_total\":1450},{\"date\":\"2026-06-06\",\"mpi\":1.2,\"miner_outflow_total\":1525},{\"date\":\"2026-06-07\",\"mpi\":1.28,\"miner_outflow_total\":1600},{\"date\":\"2026-06-08\",\"mpi\":1.36,\"miner_outflow_total\":1675},{\"date\":\"2026-06-09\",\"mpi\":1.44,\"miner_outflow_total\":1750}]}}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://api.cryptoquant.com",
+    "ttl_seconds": 300,
+    "priority": "P3",
+    "family": "MINER_FLOW",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": 200,
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

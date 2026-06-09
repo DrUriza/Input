@@ -1,0 +1,140 @@
+{
+  "endpoint_id": "coinglass_futures_liquidation_heatmap_model2",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "LIQUIDATION_RISK",
+  "source_category": "liquidation_heatmap",
+  "output_type": "heatmap",
+  "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/heatmap/model2",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 68210.0,
+        "side": "long",
+        "leverage": 25,
+        "liquidation_usd": 1200000,
+        "intensity": 0.55
+      },
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 68910.0,
+        "side": "short",
+        "leverage": 25,
+        "liquidation_usd": 1200000,
+        "intensity": 0.55
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 68466.53,
+        "side": "long",
+        "leverage": 30,
+        "liquidation_usd": 1450000,
+        "intensity": 0.63
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 69236.53,
+        "side": "short",
+        "leverage": 30,
+        "liquidation_usd": 1450000,
+        "intensity": 0.63
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 68657.29,
+        "side": "long",
+        "leverage": 35,
+        "liquidation_usd": 1700000,
+        "intensity": 0.71
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 69497.29,
+        "side": "short",
+        "leverage": 35,
+        "liquidation_usd": 1700000,
+        "intensity": 0.71
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 68777.0,
+        "side": "long",
+        "leverage": 40,
+        "liquidation_usd": 1950000,
+        "intensity": 0.79
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 69687.0,
+        "side": "short",
+        "leverage": 40,
+        "liquidation_usd": 1950000,
+        "intensity": 0.79
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 68885.67,
+        "side": "long",
+        "leverage": 45,
+        "liquidation_usd": 2200000,
+        "intensity": 0.87
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 69865.67,
+        "side": "short",
+        "leverage": 45,
+        "liquidation_usd": 2200000,
+        "intensity": 0.87
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":68210.0,\"side\":\"long\",\"leverage\":25,\"liquidation_usd\":1200000,\"intensity\":0.55},{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":68910.0,\"side\":\"short\",\"leverage\":25,\"liquidation_usd\":1200000,\"intensity\":0.55},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":68466.53,\"side\":\"long\",\"leverage\":30,\"liquidation_usd\":1450000,\"intensity\":0.63},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":69236.53,\"side\":\"short\",\"leverage\":30,\"liquidation_usd\":1450000,\"intensity\":0.63},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":68657.29,\"side\":\"long\",\"leverage\":35,\"liquidation_usd\":1700000,\"intensity\":0.71},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":69497.29,\"side\":\"short\",\"leverage\":35,\"liquidation_usd\":1700000,\"intensity\":0.71},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":68777.0,\"side\":\"long\",\"leverage\":40,\"liquidation_usd\":1950000,\"intensity\":0.79},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":69687.0,\"side\":\"short\",\"leverage\":40,\"liquidation_usd\":1950000,\"intensity\":0.79},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":68885.67,\"side\":\"long\",\"leverage\":45,\"liquidation_usd\":2200000,\"intensity\":0.87},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":69865.67,\"side\":\"short\",\"leverage\":45,\"liquidation_usd\":2200000,\"intensity\":0.87}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 60,
+    "priority": "P2",
+    "family": "LIQUIDATION_RISK",
+    "output_type": "heatmap",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

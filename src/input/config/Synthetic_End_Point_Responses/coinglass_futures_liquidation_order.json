@@ -1,0 +1,85 @@
+{
+  "endpoint_id": "coinglass_futures_liquidation_order",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "LIQUIDATION_RISK",
+  "source_category": "liquidation",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/order",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1781003751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "side": "long",
+        "price": 68560.0,
+        "amount": 3.5,
+        "value_usd": 239960.0
+      },
+      {
+        "time": 1781004351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "side": "short",
+        "price": 68851.53,
+        "amount": 4.3,
+        "value_usd": 296061.58
+      },
+      {
+        "time": 1781004951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "side": "long",
+        "price": 69077.29,
+        "amount": 5.1,
+        "value_usd": 352294.18
+      },
+      {
+        "time": 1781005551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "side": "short",
+        "price": 69232.0,
+        "amount": 5.9,
+        "value_usd": 408468.8
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "side": "long",
+        "price": 69375.67,
+        "amount": 6.7,
+        "value_usd": 464816.99
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1781003751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"side\":\"long\",\"price\":68560.0,\"amount\":3.5,\"value_usd\":239960.0},{\"time\":1781004351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"side\":\"short\",\"price\":68851.53,\"amount\":4.3,\"value_usd\":296061.58},{\"time\":1781004951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"side\":\"long\",\"price\":69077.29,\"amount\":5.1,\"value_usd\":352294.18},{\"time\":1781005551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"side\":\"short\",\"price\":69232.0,\"amount\":5.9,\"value_usd\":408468.8},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"side\":\"long\",\"price\":69375.67,\"amount\":6.7,\"value_usd\":464816.99}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 15,
+    "priority": "P2",
+    "family": "LIQUIDATION_RISK",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

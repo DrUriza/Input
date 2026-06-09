@@ -1,0 +1,95 @@
+{
+  "endpoint_id": "coinglass_futures_taker_buy_sell_volume_history_v2",
+  "provider": "coinglass",
+  "priority": "P1",
+  "family": "ORDER_FLOW",
+  "source_category": "volume_orderflow",
+  "output_type": "event_list",
+  "url": "https://open-api-v4.coinglass.com/api/futures/v2/taker-buy-sell-volume/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "taker_buy_volume": 1280,
+        "taker_sell_volume": 1195,
+        "taker_buy_volume_usd": 87756800.0,
+        "taker_sell_volume_usd": 81929200.0,
+        "delta_volume": 85,
+        "buy_sell_ratio": 1.0711
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "taker_buy_volume": 1360,
+        "taker_sell_volume": 1260,
+        "taker_buy_volume_usd": 93638080.8,
+        "taker_sell_volume_usd": 86752927.8,
+        "delta_volume": 100,
+        "buy_sell_ratio": 1.0794
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "taker_buy_volume": 1440,
+        "taker_sell_volume": 1325,
+        "taker_buy_volume_usd": 99471297.6,
+        "taker_sell_volume_usd": 91527409.25,
+        "delta_volume": 115,
+        "buy_sell_ratio": 1.0868
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "taker_buy_volume": 1520,
+        "taker_sell_volume": 1390,
+        "taker_buy_volume_usd": 105232640.0,
+        "taker_sell_volume_usd": 96232480.0,
+        "delta_volume": 130,
+        "buy_sell_ratio": 1.0935
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "taker_buy_volume": 1600,
+        "taker_sell_volume": 1455,
+        "taker_buy_volume_usd": 111001072.0,
+        "taker_sell_volume_usd": 100941599.85,
+        "delta_volume": 145,
+        "buy_sell_ratio": 1.0997
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"taker_buy_volume\":1280,\"taker_sell_volume\":1195,\"taker_buy_volume_usd\":87756800.0,\"taker_sell_volume_usd\":81929200.0,\"delta_volume\":85,\"buy_sell_ratio\":1.0711},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"taker_buy_volume\":1360,\"taker_sell_volume\":1260,\"taker_buy_volume_usd\":93638080.8,\"taker_sell_volume_usd\":86752927.8,\"delta_volume\":100,\"buy_sell_ratio\":1.0794},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"taker_buy_volume\":1440,\"taker_sell_volume\":1325,\"taker_buy_volume_usd\":99471297.6,\"taker_sell_volume_usd\":91527409.25,\"delta_volume\":115,\"buy_sell_ratio\":1.0868},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"taker_buy_volume\":1520,\"taker_sell_volume\":1390,\"taker_buy_volume_usd\":105232640.0,\"taker_sell_volume_usd\":96232480.0,\"delta_volume\":130,\"buy_sell_ratio\":1.0935},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"taker_buy_volume\":1600,\"taker_sell_volume\":1455,\"taker_buy_volume_usd\":111001072.0,\"taker_sell_volume_usd\":100941599.85,\"delta_volume\":145,\"buy_sell_ratio\":1.0997}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 30,
+    "priority": "P1",
+    "family": "ORDER_FLOW",
+    "output_type": "event_list",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

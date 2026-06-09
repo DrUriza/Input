@@ -1,7 +1,0 @@
-{
-  "symbols": ["BTC"],
-  "pairs": ["BTCUSDT"],
-  "exchanges": ["Binance"],
-  "providers": ["coinglass", "cryptoquant"],
-  "intervals": ["1h"]
-}

@@ -1,0 +1,104 @@
+{
+  "endpoint_id": "coinglass_article_list",
+  "provider": "coinglass",
+  "priority": "P3",
+  "family": "ALERTS_EVENTS",
+  "source_category": "news_sentiment",
+  "output_type": "snapshot",
+  "url": "https://open-api-v4.coinglass.com/api/article/list",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "language": "en",
+    "page": 1,
+    "per_page": 50
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "id": "synth_news_0",
+        "published_at": "2026-06-09T03:55:51",
+        "language": "en",
+        "source": "CoinGlass Synthetic News",
+        "title": "Bitcoin order book liquidity thickens near previous weekly high",
+        "summary": "Synthetic event used to test downstream news/context processing.",
+        "tags": [
+          "BTC",
+          "market_structure"
+        ],
+        "impact_score": 0.4
+      },
+      {
+        "id": "synth_news_1",
+        "published_at": "2026-06-09T05:55:51",
+        "language": "en",
+        "source": "CoinGlass Synthetic News",
+        "title": "ETF net inflows remain positive as volatility compresses",
+        "summary": "Synthetic event used to test downstream news/context processing.",
+        "tags": [
+          "BTC",
+          "market_structure"
+        ],
+        "impact_score": 0.49
+      },
+      {
+        "id": "synth_news_2",
+        "published_at": "2026-06-09T07:55:51",
+        "language": "en",
+        "source": "CoinGlass Synthetic News",
+        "title": "Futures leverage rises while funding stays moderate",
+        "summary": "Synthetic event used to test downstream news/context processing.",
+        "tags": [
+          "BTC",
+          "market_structure"
+        ],
+        "impact_score": 0.58
+      },
+      {
+        "id": "synth_news_3",
+        "published_at": "2026-06-09T09:55:51",
+        "language": "en",
+        "source": "CoinGlass Synthetic News",
+        "title": "Large whale transfer detected toward exchange wallets",
+        "summary": "Synthetic event used to test downstream news/context processing.",
+        "tags": [
+          "BTC",
+          "market_structure"
+        ],
+        "impact_score": 0.67
+      },
+      {
+        "id": "synth_news_4",
+        "published_at": "2026-06-09T11:55:51",
+        "language": "en",
+        "source": "CoinGlass Synthetic News",
+        "title": "Macro calendar highlights upcoming inflation data",
+        "summary": "Synthetic event used to test downstream news/context processing.",
+        "tags": [
+          "BTC",
+          "market_structure"
+        ],
+        "impact_score": 0.76
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"id\":\"synth_news_0\",\"published_at\":\"2026-06-09T03:55:51\",\"language\":\"en\",\"source\":\"CoinGlass Synthetic News\",\"title\":\"Bitcoin order book liquidity thickens near previous weekly high\",\"summary\":\"Synthetic event used to test downstream news/context processing.\",\"tags\":[\"BTC\",\"market_structure\"],\"impact_score\":0.4},{\"id\":\"synth_news_1\",\"published_at\":\"2026-06-09T05:55:51\",\"language\":\"en\",\"source\":\"CoinGlass Synthetic News\",\"title\":\"ETF net inflows remain positive as volatility compresses\",\"summary\":\"Synthetic event used to test downstream news/context processing.\",\"tags\":[\"BTC\",\"market_structure\"],\"impact_score\":0.49},{\"id\":\"synth_news_2\",\"published_at\":\"2026-06-09T07:55:51\",\"language\":\"en\",\"source\":\"CoinGlass Synthetic News\",\"title\":\"Futures leverage rises while funding stays moderate\",\"summary\":\"Synthetic event used to test downstream news/context processing.\",\"tags\":[\"BTC\",\"market_structure\"],\"impact_score\":0.58},{\"id\":\"synth_news_3\",\"published_at\":\"2026-06-09T09:55:51\",\"language\":\"en\",\"source\":\"CoinGlass Synthetic News\",\"title\":\"Large whale transfer detected toward exchange wallets\",\"summary\":\"Synthetic event used to test downstream news/context processing.\",\"tags\":[\"BTC\",\"market_structure\"],\"impact_score\":0.67},{\"id\":\"synth_news_4\",\"published_at\":\"2026-06-09T11:55:51\",\"language\":\"en\",\"source\":\"CoinGlass Synthetic News\",\"title\":\"Macro calendar highlights upcoming inflation data\",\"summary\":\"Synthetic event used to test downstream news/context processing.\",\"tags\":[\"BTC\",\"market_structure\"],\"impact_score\":0.76}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 1800,
+    "priority": "P3",
+    "family": "ALERTS_EVENTS",
+    "output_type": "snapshot",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

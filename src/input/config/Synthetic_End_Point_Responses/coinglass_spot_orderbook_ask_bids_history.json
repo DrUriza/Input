@@ -1,0 +1,96 @@
+{
+  "endpoint_id": "coinglass_spot_orderbook_ask_bids_history",
+  "provider": "coinglass",
+  "priority": "P1",
+  "family": "LIQUIDITY_BOOK",
+  "source_category": "spot_orderbook",
+  "output_type": "event_list",
+  "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/ask-bids-history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "range": "1",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "range": "1",
+        "bids_usd": 220000000,
+        "asks_usd": 205000000,
+        "bid_ask_ratio": 1.0732,
+        "mid_price": 68560.0,
+        "exchange": "Binance"
+      },
+      {
+        "time": 1780995351000,
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "range": "1",
+        "bids_usd": 233000000,
+        "asks_usd": 215500000,
+        "bid_ask_ratio": 1.0812,
+        "mid_price": 68851.53,
+        "exchange": "Binance"
+      },
+      {
+        "time": 1780998951000,
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "range": "1",
+        "bids_usd": 246000000,
+        "asks_usd": 226000000,
+        "bid_ask_ratio": 1.0885,
+        "mid_price": 69077.29,
+        "exchange": "Binance"
+      },
+      {
+        "time": 1781002551000,
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "range": "1",
+        "bids_usd": 259000000,
+        "asks_usd": 236500000,
+        "bid_ask_ratio": 1.0951,
+        "mid_price": 69232.0,
+        "exchange": "Binance"
+      },
+      {
+        "time": 1781006151000,
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "range": "1",
+        "bids_usd": 272000000,
+        "asks_usd": 247000000,
+        "bid_ask_ratio": 1.1012,
+        "mid_price": 69375.67,
+        "exchange": "Binance"
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"symbol\":\"BTCUSDT\",\"interval\":\"1h\",\"range\":\"1\",\"bids_usd\":220000000,\"asks_usd\":205000000,\"bid_ask_ratio\":1.0732,\"mid_price\":68560.0,\"exchange\":\"Binance\"},{\"time\":1780995351000,\"symbol\":\"BTCUSDT\",\"interval\":\"1h\",\"range\":\"1\",\"bids_usd\":233000000,\"asks_usd\":215500000,\"bid_ask_ratio\":1.0812,\"mid_price\":68851.53,\"exchange\":\"Binance\"},{\"time\":1780998951000,\"symbol\":\"BTCUSDT\",\"interval\":\"1h\",\"range\":\"1\",\"bids_usd\":246000000,\"asks_usd\":226000000,\"bid_ask_ratio\":1.0885,\"mid_price\":69077.29,\"exchange\":\"Binance\"},{\"time\":1781002551000,\"symbol\":\"BTCUSDT\",\"interval\":\"1h\",\"range\":\"1\",\"bids_usd\":259000000,\"asks_usd\":236500000,\"bid_ask_ratio\":1.0951,\"mid_price\":69232.0,\"exchange\":\"Binance\"},{\"time\":1781006151000,\"symbol\":\"BTCUSDT\",\"interval\":\"1h\",\"range\":\"1\",\"bids_usd\":272000000,\"asks_usd\":247000000,\"bid_ask_ratio\":1.1012,\"mid_price\":69375.67,\"exchange\":\"Binance\"}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 30,
+    "priority": "P1",
+    "family": "LIQUIDITY_BOOK",
+    "output_type": "event_list",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

@@ -1,0 +1,93 @@
+{
+  "endpoint_id": "coinglass_chain_whale_transfer",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "WHALES_LARGE_PLAYERS",
+  "source_category": "whale_alerts_onchain",
+  "output_type": "event_list",
+  "url": "https://open-api-v4.coinglass.com/api/chain/v2/whale-transfer",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "symbol": "BTC",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780995351000,
+        "symbol": "BTC",
+        "chain": "Bitcoin",
+        "from_label": "unknown_wallet",
+        "to_label": "Binance",
+        "amount": 250.0,
+        "value_usd": 17140000.0,
+        "direction": "exchange_inflow",
+        "tx_hash": "0xsynthwhale000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "time": 1780998051000,
+        "symbol": "BTC",
+        "chain": "Bitcoin",
+        "from_label": "miner_wallet",
+        "to_label": "cold_wallet",
+        "amount": 287.5,
+        "value_usd": 19794814.88,
+        "direction": "exchange_outflow",
+        "tx_hash": "0xsynthwhale000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "time": 1781000751000,
+        "symbol": "BTC",
+        "chain": "Bitcoin",
+        "from_label": "unknown_wallet",
+        "to_label": "Binance",
+        "amount": 325.0,
+        "value_usd": 22450119.25,
+        "direction": "exchange_inflow",
+        "tx_hash": "0xsynthwhale000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "time": 1781003451000,
+        "symbol": "BTC",
+        "chain": "Bitcoin",
+        "from_label": "miner_wallet",
+        "to_label": "cold_wallet",
+        "amount": 362.5,
+        "value_usd": 25096600.0,
+        "direction": "exchange_outflow",
+        "tx_hash": "0xsynthwhale000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "time": 1781006151000,
+        "symbol": "BTC",
+        "chain": "Bitcoin",
+        "from_label": "unknown_wallet",
+        "to_label": "Binance",
+        "amount": 400.0,
+        "value_usd": 27750268.0,
+        "direction": "exchange_inflow",
+        "tx_hash": "0xsynthwhale000000000000000000000000000000000000000000000000000000"
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780995351000,\"symbol\":\"BTC\",\"chain\":\"Bitcoin\",\"from_label\":\"unknown_wallet\",\"to_label\":\"Binance\",\"amount\":250.0,\"value_usd\":17140000.0,\"direction\":\"exchange_inflow\",\"tx_hash\":\"0xsynthwhale000000000000000000000000000000000000000000000000000000\"},{\"time\":1780998051000,\"symbol\":\"BTC\",\"chain\":\"Bitcoin\",\"from_label\":\"miner_wallet\",\"to_label\":\"cold_wallet\",\"amount\":287.5,\"value_usd\":19794814.88,\"direction\":\"exchange_outflow\",\"tx_hash\":\"0xsynthwhale000000000000000000000000000000000000000000000000000000\"},{\"time\":1781000751000,\"symbol\":\"BTC\",\"chain\":\"Bitcoin\",\"from_label\":\"unknown_wallet\",\"to_label\":\"Binance\",\"amount\":325.0,\"value_usd\":22450119.25,\"direction\":\"exchange_inflow\",\"tx_hash\":\"0xsynthwhale000000000000000000000000000000000000000000000000000000\"},{\"time\":1781003451000,\"symbol\":\"BTC\",\"chain\":\"Bitcoin\",\"from_label\":\"miner_wallet\",\"to_label\":\"cold_wallet\",\"amount\":362.5,\"value_usd\":25096600.0,\"direction\":\"exchange_outflow\",\"tx_hash\":\"0xsynthwhale000000000000000000000000000000000000000000000000000000\"},{\"time\":1781006151000,\"symbol\":\"BTC\",\"chain\":\"Bitcoin\",\"from_label\":\"unknown_wallet\",\"to_label\":\"Binance\",\"amount\":400.0,\"value_usd\":27750268.0,\"direction\":\"exchange_inflow\",\"tx_hash\":\"0xsynthwhale000000000000000000000000000000000000000000000000000000\"}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 60,
+    "priority": "P2",
+    "family": "WHALES_LARGE_PLAYERS",
+    "output_type": "event_list",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

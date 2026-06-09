@@ -1,0 +1,290 @@
+{
+  "endpoint_id": "coinglass_futures_volume_footprint_history",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "ORDER_FLOW",
+  "source_category": "volume_orderflow",
+  "output_type": "event_list",
+  "url": "https://open-api-v4.coinglass.com/api/futures/volume/footprint-history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68460.0,
+        "buy_volume": 85,
+        "sell_volume": 90,
+        "delta": -5,
+        "imbalance": -0.0286
+      },
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68510.0,
+        "buy_volume": 85,
+        "sell_volume": 84,
+        "delta": 1,
+        "imbalance": 0.0059
+      },
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68560.0,
+        "buy_volume": 85,
+        "sell_volume": 78,
+        "delta": 7,
+        "imbalance": 0.0429
+      },
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68610.0,
+        "buy_volume": 90,
+        "sell_volume": 78,
+        "delta": 12,
+        "imbalance": 0.0714
+      },
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68660.0,
+        "buy_volume": 95,
+        "sell_volume": 78,
+        "delta": 17,
+        "imbalance": 0.0983
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68751.53,
+        "buy_volume": 92,
+        "sell_volume": 95,
+        "delta": -3,
+        "imbalance": -0.016
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68801.53,
+        "buy_volume": 92,
+        "sell_volume": 89,
+        "delta": 3,
+        "imbalance": 0.0166
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68851.53,
+        "buy_volume": 92,
+        "sell_volume": 83,
+        "delta": 9,
+        "imbalance": 0.0514
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68901.53,
+        "buy_volume": 97,
+        "sell_volume": 83,
+        "delta": 14,
+        "imbalance": 0.0778
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68951.53,
+        "buy_volume": 102,
+        "sell_volume": 83,
+        "delta": 19,
+        "imbalance": 0.1027
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 68977.29,
+        "buy_volume": 99,
+        "sell_volume": 100,
+        "delta": -1,
+        "imbalance": -0.005
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69027.29,
+        "buy_volume": 99,
+        "sell_volume": 94,
+        "delta": 5,
+        "imbalance": 0.0259
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69077.29,
+        "buy_volume": 99,
+        "sell_volume": 88,
+        "delta": 11,
+        "imbalance": 0.0588
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69127.29,
+        "buy_volume": 104,
+        "sell_volume": 88,
+        "delta": 16,
+        "imbalance": 0.0833
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69177.29,
+        "buy_volume": 109,
+        "sell_volume": 88,
+        "delta": 21,
+        "imbalance": 0.1066
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69132.0,
+        "buy_volume": 106,
+        "sell_volume": 105,
+        "delta": 1,
+        "imbalance": 0.0047
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69182.0,
+        "buy_volume": 106,
+        "sell_volume": 99,
+        "delta": 7,
+        "imbalance": 0.0341
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69232.0,
+        "buy_volume": 106,
+        "sell_volume": 93,
+        "delta": 13,
+        "imbalance": 0.0653
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69282.0,
+        "buy_volume": 111,
+        "sell_volume": 93,
+        "delta": 18,
+        "imbalance": 0.0882
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69332.0,
+        "buy_volume": 116,
+        "sell_volume": 93,
+        "delta": 23,
+        "imbalance": 0.11
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69275.67,
+        "buy_volume": 113,
+        "sell_volume": 110,
+        "delta": 3,
+        "imbalance": 0.0135
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69325.67,
+        "buy_volume": 113,
+        "sell_volume": 104,
+        "delta": 9,
+        "imbalance": 0.0415
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69375.67,
+        "buy_volume": 113,
+        "sell_volume": 98,
+        "delta": 15,
+        "imbalance": 0.0711
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69425.67,
+        "buy_volume": 118,
+        "sell_volume": 98,
+        "delta": 20,
+        "imbalance": 0.0926
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price": 69475.67,
+        "buy_volume": 123,
+        "sell_volume": 98,
+        "delta": 25,
+        "imbalance": 0.1131
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68460.0,\"buy_volume\":85,\"sell_volume\":90,\"delta\":-5,\"imbalance\":-0.0286},{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68510.0,\"buy_volume\":85,\"sell_volume\":84,\"delta\":1,\"imbalance\":0.0059},{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68560.0,\"buy_volume\":85,\"sell_volume\":78,\"delta\":7,\"imbalance\":0.0429},{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68610.0,\"buy_volume\":90,\"sell_volume\":78,\"delta\":12,\"imbalance\":0.0714},{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68660.0,\"buy_volume\":95,\"sell_volume\":78,\"delta\":17,\"imbalance\":0.0983},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68751.53,\"buy_volume\":92,\"sell_volume\":95,\"delta\":-3,\"imbalance\":-0.016},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68801.53,\"buy_volume\":92,\"sell_volume\":89,\"delta\":3,\"imbalance\":0.0166},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68851.53,\"buy_volume\":92,\"sell_volume\":83,\"delta\":9,\"imbalance\":0.0514},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68901.53,\"buy_volume\":97,\"sell_volume\":83,\"delta\":14,\"imbalance\":0.0778},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68951.53,\"buy_volume\":102,\"sell_volume\":83,\"delta\":19,\"imbalance\":0.1027},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":68977.29,\"buy_volume\":99,\"sell_volume\":100,\"delta\":-1,\"imbalance\":-0.005},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69027.29,\"buy_volume\":99,\"sell_volume\":94,\"delta\":5,\"imbalance\":0.0259},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69077.29,\"buy_volume\":99,\"sell_volume\":88,\"delta\":11,\"imbalance\":0.0588},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69127.29,\"buy_volume\":104,\"sell_volume\":88,\"delta\":16,\"imbalance\":0.0833},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69177.29,\"buy_volume\":109,\"sell_volume\":88,\"delta\":21,\"imbalance\":0.1066},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69132.0,\"buy_volume\":106,\"sell_volume\":105,\"delta\":1,\"imbalance\":0.0047},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69182.0,\"buy_volume\":106,\"sell_volume\":99,\"delta\":7,\"imbalance\":0.0341},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69232.0,\"buy_volume\":106,\"sell_volume\":93,\"delta\":13,\"imbalance\":0.0653},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69282.0,\"buy_volume\":111,\"sell_volume\":93,\"delta\":18,\"imbalance\":0.0882},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69332.0,\"buy_volume\":116,\"sell_volume\":93,\"delta\":23,\"imbalance\":0.11},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69275.67,\"buy_volume\":113,\"sell_volume\":110,\"delta\":3,\"imbalance\":0.0135},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69325.67,\"buy_volume\":113,\"sell_volume\":104,\"delta\":9,\"imbalance\":0.0415},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69375.67,\"buy_volume\":113,\"sell_volume\":98,\"delta\":15,\"imbalance\":0.0711},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69425.67,\"buy_volume\":118,\"sell_volume\":98,\"delta\":20,\"imbalance\":0.0926},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price\":69475.67,\"buy_volume\":123,\"sell_volume\":98,\"delta\":25,\"imbalance\":0.1131}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 60,
+    "priority": "P2",
+    "family": "ORDER_FLOW",
+    "output_type": "event_list",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

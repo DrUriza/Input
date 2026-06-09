@@ -1,0 +1,150 @@
+{
+  "endpoint_id": "coinglass_futures_orderbook_history",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "LIQUIDITY_BOOK",
+  "source_category": "orderbook_heatmap",
+  "output_type": "heatmap",
+  "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "4h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780948551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 68310.0,
+        "side": "bid",
+        "size_btc": 25,
+        "size_usd": 1714000.0,
+        "distance_to_mid_pct": 0.3646
+      },
+      {
+        "time": 1780948551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 69060.0,
+        "side": "ask",
+        "size_btc": 29,
+        "size_usd": 1988240.0,
+        "distance_to_mid_pct": 0.7293
+      },
+      {
+        "time": 1780962951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 68601.53,
+        "side": "bid",
+        "size_btc": 28,
+        "size_usd": 1927842.84,
+        "distance_to_mid_pct": 0.3631
+      },
+      {
+        "time": 1780962951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 69351.53,
+        "side": "ask",
+        "size_btc": 32,
+        "size_usd": 2203248.96,
+        "distance_to_mid_pct": 0.7262
+      },
+      {
+        "time": 1780977351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 68827.29,
+        "side": "bid",
+        "size_btc": 31,
+        "size_usd": 2141395.99,
+        "distance_to_mid_pct": 0.3619
+      },
+      {
+        "time": 1780977351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 69577.29,
+        "side": "ask",
+        "size_btc": 35,
+        "size_usd": 2417705.15,
+        "distance_to_mid_pct": 0.7238
+      },
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 68982.0,
+        "side": "bid",
+        "size_btc": 34,
+        "size_usd": 2353888.0,
+        "distance_to_mid_pct": 0.3611
+      },
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 69732.0,
+        "side": "ask",
+        "size_btc": 38,
+        "size_usd": 2630816.0,
+        "distance_to_mid_pct": 0.7222
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 69125.67,
+        "side": "bid",
+        "size_btc": 37,
+        "size_usd": 2566899.79,
+        "distance_to_mid_pct": 0.3604
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "price_level": 69875.67,
+        "side": "ask",
+        "size_btc": 41,
+        "size_usd": 2844402.47,
+        "distance_to_mid_pct": 0.7207
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780948551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":68310.0,\"side\":\"bid\",\"size_btc\":25,\"size_usd\":1714000.0,\"distance_to_mid_pct\":0.3646},{\"time\":1780948551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":69060.0,\"side\":\"ask\",\"size_btc\":29,\"size_usd\":1988240.0,\"distance_to_mid_pct\":0.7293},{\"time\":1780962951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":68601.53,\"side\":\"bid\",\"size_btc\":28,\"size_usd\":1927842.84,\"distance_to_mid_pct\":0.3631},{\"time\":1780962951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":69351.53,\"side\":\"ask\",\"size_btc\":32,\"size_usd\":2203248.96,\"distance_to_mid_pct\":0.7262},{\"time\":1780977351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":68827.29,\"side\":\"bid\",\"size_btc\":31,\"size_usd\":2141395.99,\"distance_to_mid_pct\":0.3619},{\"time\":1780977351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":69577.29,\"side\":\"ask\",\"size_btc\":35,\"size_usd\":2417705.15,\"distance_to_mid_pct\":0.7238},{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":68982.0,\"side\":\"bid\",\"size_btc\":34,\"size_usd\":2353888.0,\"distance_to_mid_pct\":0.3611},{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":69732.0,\"side\":\"ask\",\"size_btc\":38,\"size_usd\":2630816.0,\"distance_to_mid_pct\":0.7222},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":69125.67,\"side\":\"bid\",\"size_btc\":37,\"size_usd\":2566899.79,\"distance_to_mid_pct\":0.3604},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"interval\":\"4h\",\"price_level\":69875.67,\"side\":\"ask\",\"size_btc\":41,\"size_usd\":2844402.47,\"distance_to_mid_pct\":0.7207}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 30,
+    "priority": "P2",
+    "family": "LIQUIDITY_BOOK",
+    "output_type": "heatmap",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

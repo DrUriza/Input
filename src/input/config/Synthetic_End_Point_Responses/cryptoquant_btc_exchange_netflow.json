@@ -1,0 +1,75 @@
+{
+  "endpoint_id": "cryptoquant_btc_exchange_netflow",
+  "provider": "cryptoquant",
+  "priority": "P2",
+  "family": "ONCHAIN_EXCHANGE_FLOW",
+  "source_category": "onchain_exchange_flows",
+  "output_type": "time_series",
+  "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/netflow",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "binance",
+    "window": "day",
+    "limit": 5,
+    "format": "json"
+  },
+  "data": {
+    "status": {
+      "code": 200,
+      "message": "success"
+    },
+    "result": {
+      "window": "day",
+      "data": [
+        {
+          "date": "2026-06-05",
+          "exchange": "binance",
+          "netflow_total": -250,
+          "netflow_mean": -0.31
+        },
+        {
+          "date": "2026-06-06",
+          "exchange": "binance",
+          "netflow_total": -265,
+          "netflow_mean": -0.33
+        },
+        {
+          "date": "2026-06-07",
+          "exchange": "binance",
+          "netflow_total": -280,
+          "netflow_mean": -0.35
+        },
+        {
+          "date": "2026-06-08",
+          "exchange": "binance",
+          "netflow_total": -295,
+          "netflow_mean": -0.37
+        },
+        {
+          "date": "2026-06-09",
+          "exchange": "binance",
+          "netflow_total": -310,
+          "netflow_mean": -0.39
+        }
+      ]
+    }
+  },
+  "text": "{\"status\":{\"code\":200,\"message\":\"success\"},\"result\":{\"window\":\"day\",\"data\":[{\"date\":\"2026-06-05\",\"exchange\":\"binance\",\"netflow_total\":-250,\"netflow_mean\":-0.31},{\"date\":\"2026-06-06\",\"exchange\":\"binance\",\"netflow_total\":-265,\"netflow_mean\":-0.33},{\"date\":\"2026-06-07\",\"exchange\":\"binance\",\"netflow_total\":-280,\"netflow_mean\":-0.35},{\"date\":\"2026-06-08\",\"exchange\":\"binance\",\"netflow_total\":-295,\"netflow_mean\":-0.37},{\"date\":\"2026-06-09\",\"exchange\":\"binance\",\"netflow_total\":-310,\"netflow_mean\":-0.39}]}}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://api.cryptoquant.com",
+    "ttl_seconds": 120,
+    "priority": "P2",
+    "family": "ONCHAIN_EXCHANGE_FLOW",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": 200,
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

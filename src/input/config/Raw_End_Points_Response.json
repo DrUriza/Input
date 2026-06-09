@@ -1,0 +1,5591 @@
+{
+  "generated_at": "2026-06-09 11:55:51",
+  "connection": {
+    "coinglass": {
+      "connected": true,
+      "provider": "coinglass",
+      "base_url": "https://open-api-v4.coinglass.com",
+      "timeout": 20,
+      "has_api_key": true
+    },
+    "cryptoquant": {
+      "connected": true,
+      "provider": "cryptoquant",
+      "base_url": "https://api.cryptoquant.com",
+      "timeout": 20,
+      "has_api_key": true
+    }
+  },
+  "priorities": {
+    "P1": {
+      "results": [
+        {
+          "endpoint_id": "coinglass_futures_aggregated_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "ORDER_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "ORDER_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_open_interest",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_large_limit_order",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_pressure",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "LIQUIDITY_BOOK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "range": "1",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_price_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "PRICE_MARKET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_taker_buy_sell_volume_history_v2",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "ORDER_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_hyperliquid_whale_alert",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_aggregated_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "SPOT_REAL_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "SPOT_REAL_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_ask_bids_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "LIQUIDITY_BOOK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "range": "1",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_large_limit_order",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_price_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "PRICE_MARKET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_taker_buy_sell_volume_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "SPOT_REAL_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        }
+      ],
+      "raw_endpoint_responses": [
+        {
+          "endpoint_id": "coinglass_futures_aggregated_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "ORDER_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/futures/aggregated-cvd/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "ORDER_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "ORDER_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/futures/cvd/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "ORDER_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_open_interest",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/open-interest/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P1",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_large_limit_order",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/large-limit-order",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT"
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 15,
+            "priority": "P1",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_pressure",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "LIQUIDITY_BOOK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/ask-bids-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "range": "1",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 15,
+            "priority": "P1",
+            "family": "LIQUIDITY_BOOK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_price_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "PRICE_MARKET",
+          "url": "https://open-api-v4.coinglass.com/api/futures/price/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "PRICE_MARKET",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_taker_buy_sell_volume_history_v2",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "ORDER_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/futures/v2/taker-buy-sell-volume/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "ORDER_FLOW",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_hyperliquid_whale_alert",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/hyperliquid/whale-alert",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_aggregated_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "SPOT_REAL_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/spot/aggregated-cvd/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "SPOT_REAL_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_cvd_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "SPOT_REAL_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/spot/cvd/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "SPOT_REAL_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_ask_bids_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "LIQUIDITY_BOOK",
+          "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/ask-bids-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "range": "1",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "LIQUIDITY_BOOK",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_large_limit_order",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/large-limit-order",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT"
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 15,
+            "priority": "P1",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_price_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "PRICE_MARKET",
+          "url": "https://open-api-v4.coinglass.com/api/spot/price/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "PRICE_MARKET",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_taker_buy_sell_volume_history",
+          "provider": "coinglass",
+          "priority": "P1",
+          "family": "SPOT_REAL_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/spot/taker-buy-sell-volume/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P1",
+            "family": "SPOT_REAL_FLOW",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        }
+      ]
+    },
+    "P2": {
+      "results": [
+        {
+          "endpoint_id": "coinglass_chain_whale_transfer",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_coin_netflow",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "ORDER_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_exchange_list",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_oi_weight_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_vol_weight_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_global_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_heatmap_model2",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_map",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_heatmap_model2",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_map",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_max_pain",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_order",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_netflow_list",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "ORDER_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "page": 1,
+            "per_page": 50
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_aggregated_ask_bids_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "4h",
+            "range": "1",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "4h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_large_limit_order_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "state": 2,
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_top_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_top_long_short_position_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_volume_footprint_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "ORDER_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_whale_index_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_hyperliquid_global_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_coin_netflow",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "SPOT_REAL_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_netflow_list",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "SPOT_REAL_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "page": 1,
+            "per_page": 50
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_aggregated_ask_bids_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "4h",
+            "range": "1",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "4h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_large_limit_order_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "state": 2,
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_volume_footprint_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "SPOT_REAL_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_inflow",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_netflow",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_outflow",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_reserve",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        }
+      ],
+      "raw_endpoint_responses": [
+        {
+          "endpoint_id": "coinglass_chain_whale_transfer",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/chain/v2/whale-transfer",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_coin_netflow",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "ORDER_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/futures/coin/netflow",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "ORDER_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_exchange_list",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/exchange-list",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "snapshot"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_oi_weight_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/oi-weight-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_funding_rate_vol_weight_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/vol-weight-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_global_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/global-long-short-account-ratio/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_heatmap_model2",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/aggregated-heatmap/model2",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "heatmap"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/aggregated-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_aggregated_map",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/aggregated-map",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "map"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_heatmap_model2",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/heatmap/model2",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "heatmap"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_map",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/map",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "map"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_max_pain",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/max-pain",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_liquidation_order",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDATION_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/order",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 15,
+            "priority": "P2",
+            "family": "LIQUIDATION_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_netflow_list",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "ORDER_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/futures/netflow-list",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "page": 1,
+            "per_page": 50
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "ORDER_FLOW",
+            "output_type": "snapshot"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_aggregated_ask_bids_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/aggregated-ask-bids-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "4h",
+            "range": "1",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P2",
+            "family": "LIQUIDITY_BOOK",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "4h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P2",
+            "family": "LIQUIDITY_BOOK",
+            "output_type": "heatmap"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_orderbook_large_limit_order_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/large-limit-order-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "state": 2,
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P2",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_top_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/top-long-short-account-ratio/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_top_long_short_position_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "DERIVATIVES_RISK",
+          "url": "https://open-api-v4.coinglass.com/api/futures/top-long-short-position-ratio/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "DERIVATIVES_RISK",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_volume_footprint_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "ORDER_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/futures/volume/footprint-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "ORDER_FLOW",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_futures_whale_index_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/futures/whale-index/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_hyperliquid_global_long_short_account_ratio_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/hyperliquid/global-long-short-account-ratio/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_coin_netflow",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "SPOT_REAL_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/spot/coin/netflow",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "SPOT_REAL_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_netflow_list",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "SPOT_REAL_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/spot/netflow-list",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "page": 1,
+            "per_page": 50
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P2",
+            "family": "SPOT_REAL_FLOW",
+            "output_type": "snapshot"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_aggregated_ask_bids_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/aggregated-ask-bids-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange_list": "Binance",
+            "symbol": "BTC",
+            "interval": "4h",
+            "range": "1",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "LIQUIDITY_BOOK",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "LIQUIDITY_BOOK",
+          "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "4h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "LIQUIDITY_BOOK",
+            "output_type": "heatmap"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_orderbook_large_limit_order_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "WHALES_LARGE_PLAYERS",
+          "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/large-limit-order-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "state": 2,
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 30,
+            "priority": "P2",
+            "family": "WHALES_LARGE_PLAYERS",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_spot_volume_footprint_history",
+          "provider": "coinglass",
+          "priority": "P2",
+          "family": "SPOT_REAL_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/spot/volume/footprint-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "exchange": "Binance",
+            "symbol": "BTCUSDT",
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 60,
+            "priority": "P2",
+            "family": "SPOT_REAL_FLOW",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_inflow",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/inflow",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 120,
+            "priority": "P2",
+            "family": "ONCHAIN_EXCHANGE_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_netflow",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/netflow",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 120,
+            "priority": "P2",
+            "family": "ONCHAIN_EXCHANGE_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_outflow",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/outflow",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 120,
+            "priority": "P2",
+            "family": "ONCHAIN_EXCHANGE_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_exchange_reserve",
+          "provider": "cryptoquant",
+          "priority": "P2",
+          "family": "ONCHAIN_EXCHANGE_FLOW",
+          "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/reserve",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 120,
+            "priority": "P2",
+            "family": "ONCHAIN_EXCHANGE_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        }
+      ]
+    },
+    "P3": {
+      "results": [
+        {
+          "endpoint_id": "coinglass_altcoin_season_index",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "MARKET_REGIME",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_article_list",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ALERTS_EVENTS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "language": "en",
+            "page": 1,
+            "per_page": 50
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_dominance",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "MARKET_REGIME",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_aum",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_detail",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_flow_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_net_assets_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_premium_discount_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_coinbase_premium_index",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "SPOT_REAL_FLOW",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "interval": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_economic_data_calendar",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ALERTS_EVENTS",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "language": "en"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_option_exchange_oi_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "OPTIONS_CONTEXT",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "unit": "USD",
+            "range": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_option_exchange_vol_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "OPTIONS_CONTEXT",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "unit": "USD",
+            "range": "1h",
+            "limit": 5
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_option_max_pain",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "OPTIONS_CONTEXT",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "exchange": "Deribit"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_stablecoin_marketcap_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_mpi",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "MINER_FLOW",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_inflow",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_netflow",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_outflow",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_reserve",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        }
+      ],
+      "raw_endpoint_responses": [
+        {
+          "endpoint_id": "coinglass_altcoin_season_index",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "MARKET_REGIME",
+          "url": "https://open-api-v4.coinglass.com/api/index/altcoin-season",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 86400,
+            "priority": "P3",
+            "family": "MARKET_REGIME",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_article_list",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ALERTS_EVENTS",
+          "url": "https://open-api-v4.coinglass.com/api/article/list",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "language": "en",
+            "page": 1,
+            "per_page": 50
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 1800,
+            "priority": "P3",
+            "family": "ALERTS_EVENTS",
+            "output_type": "snapshot"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_dominance",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "MARKET_REGIME",
+          "url": "https://open-api-v4.coinglass.com/api/index/bitcoin-dominance",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 86400,
+            "priority": "P3",
+            "family": "MARKET_REGIME",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_aum",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/aum",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT"
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "ETF_INSTITUTIONAL",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_detail",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/detail",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT"
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "ETF_INSTITUTIONAL",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_flow_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/flow-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "ETF_INSTITUTIONAL",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_net_assets_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/net-assets/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "ETF_INSTITUTIONAL",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_bitcoin_etf_premium_discount_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ETF_INSTITUTIONAL",
+          "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/premium-discount/history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "ticker": "IBIT",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "ETF_INSTITUTIONAL",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_coinbase_premium_index",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "SPOT_REAL_FLOW",
+          "url": "https://open-api-v4.coinglass.com/api/coinbase-premium-index",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "interval": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 300,
+            "priority": "P3",
+            "family": "SPOT_REAL_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_economic_data_calendar",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "ALERTS_EVENTS",
+          "url": "https://open-api-v4.coinglass.com/api/calendar/economic-data",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "language": "en"
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "ALERTS_EVENTS",
+            "output_type": "event_list"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_option_exchange_oi_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "OPTIONS_CONTEXT",
+          "url": "https://open-api-v4.coinglass.com/api/option/exchange-oi-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "unit": "USD",
+            "range": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "OPTIONS_CONTEXT",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_option_exchange_vol_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "OPTIONS_CONTEXT",
+          "url": "https://open-api-v4.coinglass.com/api/option/exchange-vol-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "unit": "USD",
+            "range": "1h",
+            "limit": 5
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "OPTIONS_CONTEXT",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_option_max_pain",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "OPTIONS_CONTEXT",
+          "url": "https://open-api-v4.coinglass.com/api/option/max-pain",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {
+            "symbol": "BTC",
+            "exchange": "Deribit"
+          },
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "OPTIONS_CONTEXT",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "coinglass_stablecoin_marketcap_history",
+          "provider": "coinglass",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "url": "https://open-api-v4.coinglass.com/api/index/stableCoin-marketCap-history",
+          "method": "GET",
+          "http_status": 200,
+          "ok": true,
+          "params": {},
+          "data": {
+            "code": "401",
+            "msg": "Upgrade plan"
+          },
+          "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://open-api-v4.coinglass.com",
+            "ttl_seconds": 3600,
+            "priority": "P3",
+            "family": "STABLECOIN_LIQUIDITY",
+            "output_type": "time_series"
+          },
+          "provider_code": "401",
+          "provider_message": "Upgrade plan",
+          "has_data": false,
+          "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+        },
+        {
+          "endpoint_id": "cryptoquant_btc_mpi",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "MINER_FLOW",
+          "url": "https://api.cryptoquant.com/v1/btc/flow-indicator/mpi",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 300,
+            "priority": "P3",
+            "family": "MINER_FLOW",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_inflow",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/inflow",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 120,
+            "priority": "P3",
+            "family": "STABLECOIN_LIQUIDITY",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_netflow",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/netflow",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 120,
+            "priority": "P3",
+            "family": "STABLECOIN_LIQUIDITY",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_outflow",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/outflow",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 300,
+            "priority": "P3",
+            "family": "STABLECOIN_LIQUIDITY",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        },
+        {
+          "endpoint_id": "cryptoquant_stablecoin_exchange_reserve",
+          "provider": "cryptoquant",
+          "priority": "P3",
+          "family": "STABLECOIN_LIQUIDITY",
+          "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/reserve",
+          "method": "GET",
+          "http_status": 403,
+          "ok": false,
+          "params": {
+            "token": "usdt",
+            "exchange": "binance",
+            "window": "day",
+            "limit": 5,
+            "format": "json"
+          },
+          "data": {
+            "result": {},
+            "status": {
+              "code": 403,
+              "message": "forbidden",
+              "description": "403 Forbidden: You don't have an authority for this request."
+            }
+          },
+          "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+          "metadata": {
+            "attempts": 1,
+            "base_url": "https://api.cryptoquant.com",
+            "ttl_seconds": 120,
+            "priority": "P3",
+            "family": "STABLECOIN_LIQUIDITY",
+            "output_type": "time_series"
+          },
+          "provider_code": 403,
+          "provider_message": "forbidden",
+          "has_data": false,
+          "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+        }
+      ]
+    }
+  },
+  "raw_endpoint_responses": [
+    {
+      "endpoint_id": "coinglass_futures_aggregated_cvd_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "ORDER_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/futures/aggregated-cvd/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "ORDER_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_cvd_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "ORDER_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/futures/cvd/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "ORDER_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_open_interest",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/open-interest/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P1",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_orderbook_large_limit_order",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/large-limit-order",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT"
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 15,
+        "priority": "P1",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_orderbook_pressure",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "LIQUIDITY_BOOK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/ask-bids-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "range": "1",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 15,
+        "priority": "P1",
+        "family": "LIQUIDITY_BOOK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_price_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "PRICE_MARKET",
+      "url": "https://open-api-v4.coinglass.com/api/futures/price/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "PRICE_MARKET",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_taker_buy_sell_volume_history_v2",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "ORDER_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/futures/v2/taker-buy-sell-volume/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "ORDER_FLOW",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_hyperliquid_whale_alert",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/hyperliquid/whale-alert",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {},
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_aggregated_cvd_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "SPOT_REAL_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/spot/aggregated-cvd/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "SPOT_REAL_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_cvd_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "SPOT_REAL_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/spot/cvd/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "SPOT_REAL_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_orderbook_ask_bids_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "LIQUIDITY_BOOK",
+      "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/ask-bids-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "range": "1",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "LIQUIDITY_BOOK",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_orderbook_large_limit_order",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/large-limit-order",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT"
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 15,
+        "priority": "P1",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_price_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "PRICE_MARKET",
+      "url": "https://open-api-v4.coinglass.com/api/spot/price/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "PRICE_MARKET",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_taker_buy_sell_volume_history",
+      "provider": "coinglass",
+      "priority": "P1",
+      "family": "SPOT_REAL_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/spot/taker-buy-sell-volume/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P1",
+        "family": "SPOT_REAL_FLOW",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_chain_whale_transfer",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/chain/v2/whale-transfer",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_coin_netflow",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "ORDER_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/futures/coin/netflow",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "ORDER_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_funding_rate",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_funding_rate_exchange_list",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/exchange-list",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "snapshot"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_funding_rate_oi_weight_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/oi-weight-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_funding_rate_vol_weight_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/vol-weight-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_global_long_short_account_ratio_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/global-long-short-account-ratio/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_aggregated_heatmap_model2",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/aggregated-heatmap/model2",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "heatmap"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_aggregated_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/aggregated-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_aggregated_map",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/aggregated-map",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "map"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_heatmap_model2",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/heatmap/model2",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "heatmap"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_map",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/map",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "map"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_max_pain",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/max-pain",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_liquidation_order",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDATION_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/order",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 15,
+        "priority": "P2",
+        "family": "LIQUIDATION_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_netflow_list",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "ORDER_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/futures/netflow-list",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "page": 1,
+        "per_page": 50
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "ORDER_FLOW",
+        "output_type": "snapshot"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_orderbook_aggregated_ask_bids_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDITY_BOOK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/aggregated-ask-bids-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "interval": "4h",
+        "range": "1",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P2",
+        "family": "LIQUIDITY_BOOK",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_orderbook_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDITY_BOOK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P2",
+        "family": "LIQUIDITY_BOOK",
+        "output_type": "heatmap"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_orderbook_large_limit_order_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/futures/orderbook/large-limit-order-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "state": 2,
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P2",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_top_long_short_account_ratio_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/top-long-short-account-ratio/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_top_long_short_position_ratio_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "DERIVATIVES_RISK",
+      "url": "https://open-api-v4.coinglass.com/api/futures/top-long-short-position-ratio/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "DERIVATIVES_RISK",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_volume_footprint_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "ORDER_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/futures/volume/footprint-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "ORDER_FLOW",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_futures_whale_index_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/futures/whale-index/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_hyperliquid_global_long_short_account_ratio_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/hyperliquid/global-long-short-account-ratio/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_coin_netflow",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "SPOT_REAL_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/spot/coin/netflow",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "SPOT_REAL_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_netflow_list",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "SPOT_REAL_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/spot/netflow-list",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "page": 1,
+        "per_page": 50
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P2",
+        "family": "SPOT_REAL_FLOW",
+        "output_type": "snapshot"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_orderbook_aggregated_ask_bids_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDITY_BOOK",
+      "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/aggregated-ask-bids-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "interval": "4h",
+        "range": "1",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "LIQUIDITY_BOOK",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_orderbook_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "LIQUIDITY_BOOK",
+      "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "4h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "LIQUIDITY_BOOK",
+        "output_type": "heatmap"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_orderbook_large_limit_order_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "WHALES_LARGE_PLAYERS",
+      "url": "https://open-api-v4.coinglass.com/api/spot/orderbook/large-limit-order-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "state": 2,
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 30,
+        "priority": "P2",
+        "family": "WHALES_LARGE_PLAYERS",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_spot_volume_footprint_history",
+      "provider": "coinglass",
+      "priority": "P2",
+      "family": "SPOT_REAL_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/spot/volume/footprint-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 60,
+        "priority": "P2",
+        "family": "SPOT_REAL_FLOW",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "cryptoquant_btc_exchange_inflow",
+      "provider": "cryptoquant",
+      "priority": "P2",
+      "family": "ONCHAIN_EXCHANGE_FLOW",
+      "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/inflow",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 120,
+        "priority": "P2",
+        "family": "ONCHAIN_EXCHANGE_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "cryptoquant_btc_exchange_netflow",
+      "provider": "cryptoquant",
+      "priority": "P2",
+      "family": "ONCHAIN_EXCHANGE_FLOW",
+      "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/netflow",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 120,
+        "priority": "P2",
+        "family": "ONCHAIN_EXCHANGE_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "cryptoquant_btc_exchange_outflow",
+      "provider": "cryptoquant",
+      "priority": "P2",
+      "family": "ONCHAIN_EXCHANGE_FLOW",
+      "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/outflow",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 120,
+        "priority": "P2",
+        "family": "ONCHAIN_EXCHANGE_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "cryptoquant_btc_exchange_reserve",
+      "provider": "cryptoquant",
+      "priority": "P2",
+      "family": "ONCHAIN_EXCHANGE_FLOW",
+      "url": "https://api.cryptoquant.com/v1/btc/exchange-flows/reserve",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 120,
+        "priority": "P2",
+        "family": "ONCHAIN_EXCHANGE_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "coinglass_altcoin_season_index",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "MARKET_REGIME",
+      "url": "https://open-api-v4.coinglass.com/api/index/altcoin-season",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {},
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 86400,
+        "priority": "P3",
+        "family": "MARKET_REGIME",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_article_list",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "ALERTS_EVENTS",
+      "url": "https://open-api-v4.coinglass.com/api/article/list",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "language": "en",
+        "page": 1,
+        "per_page": 50
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 1800,
+        "priority": "P3",
+        "family": "ALERTS_EVENTS",
+        "output_type": "snapshot"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_bitcoin_dominance",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "MARKET_REGIME",
+      "url": "https://open-api-v4.coinglass.com/api/index/bitcoin-dominance",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {},
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 86400,
+        "priority": "P3",
+        "family": "MARKET_REGIME",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_bitcoin_etf_aum",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "ETF_INSTITUTIONAL",
+      "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/aum",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "ticker": "IBIT"
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "ETF_INSTITUTIONAL",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_bitcoin_etf_detail",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "ETF_INSTITUTIONAL",
+      "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/detail",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "ticker": "IBIT"
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "ETF_INSTITUTIONAL",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_bitcoin_etf_flow_history",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "ETF_INSTITUTIONAL",
+      "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/flow-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "ETF_INSTITUTIONAL",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_bitcoin_etf_net_assets_history",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "ETF_INSTITUTIONAL",
+      "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/net-assets/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "ticker": "IBIT",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "ETF_INSTITUTIONAL",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_bitcoin_etf_premium_discount_history",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "ETF_INSTITUTIONAL",
+      "url": "https://open-api-v4.coinglass.com/api/etf/bitcoin/premium-discount/history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "ticker": "IBIT",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "ETF_INSTITUTIONAL",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_coinbase_premium_index",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "SPOT_REAL_FLOW",
+      "url": "https://open-api-v4.coinglass.com/api/coinbase-premium-index",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "interval": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 300,
+        "priority": "P3",
+        "family": "SPOT_REAL_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_economic_data_calendar",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "ALERTS_EVENTS",
+      "url": "https://open-api-v4.coinglass.com/api/calendar/economic-data",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "language": "en"
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "ALERTS_EVENTS",
+        "output_type": "event_list"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_option_exchange_oi_history",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "OPTIONS_CONTEXT",
+      "url": "https://open-api-v4.coinglass.com/api/option/exchange-oi-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "unit": "USD",
+        "range": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "OPTIONS_CONTEXT",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_option_exchange_vol_history",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "OPTIONS_CONTEXT",
+      "url": "https://open-api-v4.coinglass.com/api/option/exchange-vol-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "unit": "USD",
+        "range": "1h",
+        "limit": 5
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "OPTIONS_CONTEXT",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_option_max_pain",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "OPTIONS_CONTEXT",
+      "url": "https://open-api-v4.coinglass.com/api/option/max-pain",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {
+        "symbol": "BTC",
+        "exchange": "Deribit"
+      },
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "OPTIONS_CONTEXT",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "coinglass_stablecoin_marketcap_history",
+      "provider": "coinglass",
+      "priority": "P3",
+      "family": "STABLECOIN_LIQUIDITY",
+      "url": "https://open-api-v4.coinglass.com/api/index/stableCoin-marketCap-history",
+      "method": "GET",
+      "http_status": 200,
+      "ok": true,
+      "params": {},
+      "data": {
+        "code": "401",
+        "msg": "Upgrade plan"
+      },
+      "text": "{\"code\":\"401\",\"msg\":\"Upgrade plan\"}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://open-api-v4.coinglass.com",
+        "ttl_seconds": 3600,
+        "priority": "P3",
+        "family": "STABLECOIN_LIQUIDITY",
+        "output_type": "time_series"
+      },
+      "provider_code": "401",
+      "provider_message": "Upgrade plan",
+      "has_data": false,
+      "blocked_reason": "COINGLASS_UPGRADE_PLAN"
+    },
+    {
+      "endpoint_id": "cryptoquant_btc_mpi",
+      "provider": "cryptoquant",
+      "priority": "P3",
+      "family": "MINER_FLOW",
+      "url": "https://api.cryptoquant.com/v1/btc/flow-indicator/mpi",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 300,
+        "priority": "P3",
+        "family": "MINER_FLOW",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "cryptoquant_stablecoin_exchange_inflow",
+      "provider": "cryptoquant",
+      "priority": "P3",
+      "family": "STABLECOIN_LIQUIDITY",
+      "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/inflow",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "token": "usdt",
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 120,
+        "priority": "P3",
+        "family": "STABLECOIN_LIQUIDITY",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "cryptoquant_stablecoin_exchange_netflow",
+      "provider": "cryptoquant",
+      "priority": "P3",
+      "family": "STABLECOIN_LIQUIDITY",
+      "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/netflow",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "token": "usdt",
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 120,
+        "priority": "P3",
+        "family": "STABLECOIN_LIQUIDITY",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "cryptoquant_stablecoin_exchange_outflow",
+      "provider": "cryptoquant",
+      "priority": "P3",
+      "family": "STABLECOIN_LIQUIDITY",
+      "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/outflow",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "token": "usdt",
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 300,
+        "priority": "P3",
+        "family": "STABLECOIN_LIQUIDITY",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    },
+    {
+      "endpoint_id": "cryptoquant_stablecoin_exchange_reserve",
+      "provider": "cryptoquant",
+      "priority": "P3",
+      "family": "STABLECOIN_LIQUIDITY",
+      "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/reserve",
+      "method": "GET",
+      "http_status": 403,
+      "ok": false,
+      "params": {
+        "token": "usdt",
+        "exchange": "binance",
+        "window": "day",
+        "limit": 5,
+        "format": "json"
+      },
+      "data": {
+        "result": {},
+        "status": {
+          "code": 403,
+          "message": "forbidden",
+          "description": "403 Forbidden: You don't have an authority for this request."
+        }
+      },
+      "text": "{\"result\":{},\"status\":{\"code\":403,\"message\":\"forbidden\",\"description\":\"403 Forbidden: You don't have an authority for this request.\"}}",
+      "metadata": {
+        "attempts": 1,
+        "base_url": "https://api.cryptoquant.com",
+        "ttl_seconds": 120,
+        "priority": "P3",
+        "family": "STABLECOIN_LIQUIDITY",
+        "output_type": "time_series"
+      },
+      "provider_code": 403,
+      "provider_message": "forbidden",
+      "has_data": false,
+      "blocked_reason": "CRYPTOQUANT_FORBIDDEN"
+    }
+  ]
+}

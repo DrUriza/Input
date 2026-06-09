@@ -1,0 +1,80 @@
+{
+  "endpoint_id": "coinglass_futures_whale_index_history",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "WHALES_LARGE_PLAYERS",
+  "source_category": "whale_index",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/futures/whale-index/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "whale_index": 62.0,
+        "large_participant_buy_pressure": 0.48,
+        "large_participant_sell_pressure": 0.39
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "whale_index": 64.4,
+        "large_participant_buy_pressure": 0.505,
+        "large_participant_sell_pressure": 0.38
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "whale_index": 66.8,
+        "large_participant_buy_pressure": 0.53,
+        "large_participant_sell_pressure": 0.37
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "whale_index": 69.2,
+        "large_participant_buy_pressure": 0.555,
+        "large_participant_sell_pressure": 0.36
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "whale_index": 71.6,
+        "large_participant_buy_pressure": 0.58,
+        "large_participant_sell_pressure": 0.35
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"whale_index\":62.0,\"large_participant_buy_pressure\":0.48,\"large_participant_sell_pressure\":0.39},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"whale_index\":64.4,\"large_participant_buy_pressure\":0.505,\"large_participant_sell_pressure\":0.38},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"whale_index\":66.8,\"large_participant_buy_pressure\":0.53,\"large_participant_sell_pressure\":0.37},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"whale_index\":69.2,\"large_participant_buy_pressure\":0.555,\"large_participant_sell_pressure\":0.36},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"whale_index\":71.6,\"large_participant_buy_pressure\":0.58,\"large_participant_sell_pressure\":0.35}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 300,
+    "priority": "P2",
+    "family": "WHALES_LARGE_PLAYERS",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

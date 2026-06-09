@@ -1,0 +1,79 @@
+{
+  "endpoint_id": "coinglass_hyperliquid_global_long_short_account_ratio_history",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "WHALES_LARGE_PLAYERS",
+  "source_category": "long_short_ratio",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/hyperliquid/global-long-short-account-ratio/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "symbol": "BTC",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "symbol": "BTC",
+        "long_account": 0.52,
+        "short_account": 0.48,
+        "long_short_ratio": 1.0833,
+        "platform": "Hyperliquid"
+      },
+      {
+        "time": 1780995351000,
+        "symbol": "BTC",
+        "long_account": 0.532,
+        "short_account": 0.468,
+        "long_short_ratio": 1.1368,
+        "platform": "Hyperliquid"
+      },
+      {
+        "time": 1780998951000,
+        "symbol": "BTC",
+        "long_account": 0.544,
+        "short_account": 0.456,
+        "long_short_ratio": 1.193,
+        "platform": "Hyperliquid"
+      },
+      {
+        "time": 1781002551000,
+        "symbol": "BTC",
+        "long_account": 0.556,
+        "short_account": 0.444,
+        "long_short_ratio": 1.2523,
+        "platform": "Hyperliquid"
+      },
+      {
+        "time": 1781006151000,
+        "symbol": "BTC",
+        "long_account": 0.568,
+        "short_account": 0.432,
+        "long_short_ratio": 1.3148,
+        "platform": "Hyperliquid"
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"symbol\":\"BTC\",\"long_account\":0.52,\"short_account\":0.48,\"long_short_ratio\":1.0833,\"platform\":\"Hyperliquid\"},{\"time\":1780995351000,\"symbol\":\"BTC\",\"long_account\":0.532,\"short_account\":0.468,\"long_short_ratio\":1.1368,\"platform\":\"Hyperliquid\"},{\"time\":1780998951000,\"symbol\":\"BTC\",\"long_account\":0.544,\"short_account\":0.456,\"long_short_ratio\":1.193,\"platform\":\"Hyperliquid\"},{\"time\":1781002551000,\"symbol\":\"BTC\",\"long_account\":0.556,\"short_account\":0.444,\"long_short_ratio\":1.2523,\"platform\":\"Hyperliquid\"},{\"time\":1781006151000,\"symbol\":\"BTC\",\"long_account\":0.568,\"short_account\":0.432,\"long_short_ratio\":1.3148,\"platform\":\"Hyperliquid\"}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 60,
+    "priority": "P2",
+    "family": "WHALES_LARGE_PLAYERS",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

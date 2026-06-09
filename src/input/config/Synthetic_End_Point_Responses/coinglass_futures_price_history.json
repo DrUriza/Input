@@ -1,0 +1,95 @@
+{
+  "endpoint_id": "coinglass_futures_price_history",
+  "provider": "coinglass",
+  "priority": "P1",
+  "family": "PRICE_MARKET",
+  "source_category": "ohlc",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/futures/price/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 68480.0,
+        "high": 68725.0,
+        "low": 68350.0,
+        "close": 68595.0,
+        "volume": 1219.1828,
+        "volume_usd": 82272000.0
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 68771.53,
+        "high": 69016.53,
+        "low": 68641.53,
+        "close": 68886.53,
+        "volume": 1370.7503,
+        "volume_usd": 94326596.1
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 68997.29,
+        "high": 69242.29,
+        "low": 68867.29,
+        "close": 69112.29,
+        "volume": 1548.2509,
+        "volume_usd": 106379026.6
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 69152.0,
+        "high": 69397.0,
+        "low": 69022.0,
+        "close": 69267.0,
+        "volume": 1716.6963,
+        "volume_usd": 118386720.0
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 69295.67,
+        "high": 69540.67,
+        "low": 69165.67,
+        "close": 69410.67,
+        "volume": 1902.0941,
+        "volume_usd": 130426259.6
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":68480.0,\"high\":68725.0,\"low\":68350.0,\"close\":68595.0,\"volume\":1219.1828,\"volume_usd\":82272000.0},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":68771.53,\"high\":69016.53,\"low\":68641.53,\"close\":68886.53,\"volume\":1370.7503,\"volume_usd\":94326596.1},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":68997.29,\"high\":69242.29,\"low\":68867.29,\"close\":69112.29,\"volume\":1548.2509,\"volume_usd\":106379026.6},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":69152.0,\"high\":69397.0,\"low\":69022.0,\"close\":69267.0,\"volume\":1716.6963,\"volume_usd\":118386720.0},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":69295.67,\"high\":69540.67,\"low\":69165.67,\"close\":69410.67,\"volume\":1902.0941,\"volume_usd\":130426259.6}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 30,
+    "priority": "P1",
+    "family": "PRICE_MARKET",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

@@ -1,0 +1,74 @@
+{
+  "endpoint_id": "coinglass_futures_funding_rate_exchange_list",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "DERIVATIVES_RISK",
+  "source_category": "funding_rate",
+  "output_type": "snapshot",
+  "url": "https://open-api-v4.coinglass.com/api/futures/funding-rate/exchange-list",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "symbol": "BTC",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "exchange": "Binance",
+        "symbol": "BTC",
+        "funding_rate": 8e-05,
+        "next_funding_time": 1781034951000,
+        "open_interest_usd": 1000000000
+      },
+      {
+        "exchange": "OKX",
+        "symbol": "BTC",
+        "funding_rate": 9.2e-05,
+        "next_funding_time": 1781034951000,
+        "open_interest_usd": 1075000000
+      },
+      {
+        "exchange": "Bybit",
+        "symbol": "BTC",
+        "funding_rate": 0.000104,
+        "next_funding_time": 1781034951000,
+        "open_interest_usd": 1150000000
+      },
+      {
+        "exchange": "Deribit",
+        "symbol": "BTC",
+        "funding_rate": 0.000116,
+        "next_funding_time": 1781034951000,
+        "open_interest_usd": 1225000000
+      },
+      {
+        "exchange": "Bitget",
+        "symbol": "BTC",
+        "funding_rate": 0.000128,
+        "next_funding_time": 1781034951000,
+        "open_interest_usd": 1300000000
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"exchange\":\"Binance\",\"symbol\":\"BTC\",\"funding_rate\":8e-05,\"next_funding_time\":1781034951000,\"open_interest_usd\":1000000000},{\"exchange\":\"OKX\",\"symbol\":\"BTC\",\"funding_rate\":9.2e-05,\"next_funding_time\":1781034951000,\"open_interest_usd\":1075000000},{\"exchange\":\"Bybit\",\"symbol\":\"BTC\",\"funding_rate\":0.000104,\"next_funding_time\":1781034951000,\"open_interest_usd\":1150000000},{\"exchange\":\"Deribit\",\"symbol\":\"BTC\",\"funding_rate\":0.000116,\"next_funding_time\":1781034951000,\"open_interest_usd\":1225000000},{\"exchange\":\"Bitget\",\"symbol\":\"BTC\",\"funding_rate\":0.000128,\"next_funding_time\":1781034951000,\"open_interest_usd\":1300000000}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 300,
+    "priority": "P2",
+    "family": "DERIVATIVES_RISK",
+    "output_type": "snapshot",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

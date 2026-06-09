@@ -1,0 +1,95 @@
+{
+  "endpoint_id": "coinglass_hyperliquid_whale_alert",
+  "provider": "coinglass",
+  "priority": "P1",
+  "family": "WHALES_LARGE_PLAYERS",
+  "source_category": "whale_alerts",
+  "output_type": "event_list",
+  "url": "https://open-api-v4.coinglass.com/api/hyperliquid/whale-alert",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {},
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1781002551000,
+        "platform": "Hyperliquid",
+        "symbol": "BTC",
+        "side": "long",
+        "account": "0xwhale00",
+        "entry_price": 68560.0,
+        "size_btc": 45.0,
+        "notional_usd": 3085200.0,
+        "leverage": 10,
+        "event_type": "position_increase"
+      },
+      {
+        "time": 1781003451000,
+        "platform": "Hyperliquid",
+        "symbol": "BTC",
+        "side": "short",
+        "account": "0xwhale01",
+        "entry_price": 68851.53,
+        "size_btc": 52.5,
+        "notional_usd": 3614705.32,
+        "leverage": 11,
+        "event_type": "position_increase"
+      },
+      {
+        "time": 1781004351000,
+        "platform": "Hyperliquid",
+        "symbol": "BTC",
+        "side": "long",
+        "account": "0xwhale02",
+        "entry_price": 69077.29,
+        "size_btc": 60.0,
+        "notional_usd": 4144637.4,
+        "leverage": 12,
+        "event_type": "position_increase"
+      },
+      {
+        "time": 1781005251000,
+        "platform": "Hyperliquid",
+        "symbol": "BTC",
+        "side": "short",
+        "account": "0xwhale03",
+        "entry_price": 69232.0,
+        "size_btc": 67.5,
+        "notional_usd": 4673160.0,
+        "leverage": 13,
+        "event_type": "position_reduce"
+      },
+      {
+        "time": 1781006151000,
+        "platform": "Hyperliquid",
+        "symbol": "BTC",
+        "side": "long",
+        "account": "0xwhale04",
+        "entry_price": 69375.67,
+        "size_btc": 75.0,
+        "notional_usd": 5203175.25,
+        "leverage": 14,
+        "event_type": "position_reduce"
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1781002551000,\"platform\":\"Hyperliquid\",\"symbol\":\"BTC\",\"side\":\"long\",\"account\":\"0xwhale00\",\"entry_price\":68560.0,\"size_btc\":45.0,\"notional_usd\":3085200.0,\"leverage\":10,\"event_type\":\"position_increase\"},{\"time\":1781003451000,\"platform\":\"Hyperliquid\",\"symbol\":\"BTC\",\"side\":\"short\",\"account\":\"0xwhale01\",\"entry_price\":68851.53,\"size_btc\":52.5,\"notional_usd\":3614705.32,\"leverage\":11,\"event_type\":\"position_increase\"},{\"time\":1781004351000,\"platform\":\"Hyperliquid\",\"symbol\":\"BTC\",\"side\":\"long\",\"account\":\"0xwhale02\",\"entry_price\":69077.29,\"size_btc\":60.0,\"notional_usd\":4144637.4,\"leverage\":12,\"event_type\":\"position_increase\"},{\"time\":1781005251000,\"platform\":\"Hyperliquid\",\"symbol\":\"BTC\",\"side\":\"short\",\"account\":\"0xwhale03\",\"entry_price\":69232.0,\"size_btc\":67.5,\"notional_usd\":4673160.0,\"leverage\":13,\"event_type\":\"position_reduce\"},{\"time\":1781006151000,\"platform\":\"Hyperliquid\",\"symbol\":\"BTC\",\"side\":\"long\",\"account\":\"0xwhale04\",\"entry_price\":69375.67,\"size_btc\":75.0,\"notional_usd\":5203175.25,\"leverage\":14,\"event_type\":\"position_reduce\"}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 30,
+    "priority": "P1",
+    "family": "WHALES_LARGE_PLAYERS",
+    "output_type": "event_list",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

@@ -1,8 +1,13 @@
-from .pipeline import InputPipeline, Pipeline, PipelineEndpointResult, ProviderEndpointRecord
+from __future__ import annotations
 
-__all__ = [
-	"Pipeline",
-	"ProviderEndpointRecord",
-	"InputPipeline",
-	"PipelineEndpointResult",
-]
+from importlib import import_module
+from typing import Any
+
+__all__ = ["Pipeline", "ProviderEndpointRecord", "InputPipeline"]
+
+
+def __getattr__(name: str) -> Any:
+	if name in __all__:
+		module = import_module(".pipeline", __name__)
+		return getattr(module, name)
+	raise AttributeError(f"module '{__name__}' has no attribute '{name}'")

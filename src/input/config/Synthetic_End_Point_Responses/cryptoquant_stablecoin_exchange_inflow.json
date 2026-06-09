@@ -1,0 +1,81 @@
+{
+  "endpoint_id": "cryptoquant_stablecoin_exchange_inflow",
+  "provider": "cryptoquant",
+  "priority": "P3",
+  "family": "STABLECOIN_LIQUIDITY",
+  "source_category": "stablecoin_exchange_flows",
+  "output_type": "time_series",
+  "url": "https://api.cryptoquant.com/v1/stablecoin/exchange-flows/inflow",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "token": "usdt",
+    "exchange": "binance",
+    "window": "day",
+    "limit": 5,
+    "format": "json"
+  },
+  "data": {
+    "status": {
+      "code": 200,
+      "message": "success"
+    },
+    "result": {
+      "window": "day",
+      "data": [
+        {
+          "date": "2026-06-05",
+          "token": "usdt",
+          "exchange": "binance",
+          "inflow_total": 44000000,
+          "inflow_mean": 320000
+        },
+        {
+          "date": "2026-06-06",
+          "token": "usdt",
+          "exchange": "binance",
+          "inflow_total": 46500000,
+          "inflow_mean": 335000
+        },
+        {
+          "date": "2026-06-07",
+          "token": "usdt",
+          "exchange": "binance",
+          "inflow_total": 49000000,
+          "inflow_mean": 350000
+        },
+        {
+          "date": "2026-06-08",
+          "token": "usdt",
+          "exchange": "binance",
+          "inflow_total": 51500000,
+          "inflow_mean": 365000
+        },
+        {
+          "date": "2026-06-09",
+          "token": "usdt",
+          "exchange": "binance",
+          "inflow_total": 54000000,
+          "inflow_mean": 380000
+        }
+      ]
+    }
+  },
+  "text": "{\"status\":{\"code\":200,\"message\":\"success\"},\"result\":{\"window\":\"day\",\"data\":[{\"date\":\"2026-06-05\",\"token\":\"usdt\",\"exchange\":\"binance\",\"inflow_total\":44000000,\"inflow_mean\":320000},{\"date\":\"2026-06-06\",\"token\":\"usdt\",\"exchange\":\"binance\",\"inflow_total\":46500000,\"inflow_mean\":335000},{\"date\":\"2026-06-07\",\"token\":\"usdt\",\"exchange\":\"binance\",\"inflow_total\":49000000,\"inflow_mean\":350000},{\"date\":\"2026-06-08\",\"token\":\"usdt\",\"exchange\":\"binance\",\"inflow_total\":51500000,\"inflow_mean\":365000},{\"date\":\"2026-06-09\",\"token\":\"usdt\",\"exchange\":\"binance\",\"inflow_total\":54000000,\"inflow_mean\":380000}]}}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://api.cryptoquant.com",
+    "ttl_seconds": 120,
+    "priority": "P3",
+    "family": "STABLECOIN_LIQUIDITY",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": 200,
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

@@ -1,0 +1,95 @@
+{
+  "endpoint_id": "coinglass_futures_open_interest",
+  "provider": "coinglass",
+  "priority": "P1",
+  "family": "DERIVATIVES_RISK",
+  "source_category": "open_interest",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/futures/open-interest/history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 1920750000.0,
+        "high": 1985100000.0,
+        "low": 1895400000.0,
+        "close": 1950000000,
+        "open_interest_usd": 1950000000,
+        "open_interest_contracts": 28500
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 1962120000.0,
+        "high": 2027856000.0,
+        "low": 1936224000.0,
+        "close": 1992000000,
+        "open_interest_usd": 1992000000,
+        "open_interest_contracts": 28910
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 2003490000.0,
+        "high": 2070612000.0,
+        "low": 1977048000.0,
+        "close": 2034000000,
+        "open_interest_usd": 2034000000,
+        "open_interest_contracts": 29320
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 2044860000.0,
+        "high": 2113368000.0,
+        "low": 2017872000.0,
+        "close": 2076000000,
+        "open_interest_usd": 2076000000,
+        "open_interest_contracts": 29730
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "open": 2086230000.0,
+        "high": 2156124000.0,
+        "low": 2058696000.0,
+        "close": 2118000000,
+        "open_interest_usd": 2118000000,
+        "open_interest_contracts": 30140
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":1920750000.0,\"high\":1985100000.0,\"low\":1895400000.0,\"close\":1950000000,\"open_interest_usd\":1950000000,\"open_interest_contracts\":28500},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":1962120000.0,\"high\":2027856000.0,\"low\":1936224000.0,\"close\":1992000000,\"open_interest_usd\":1992000000,\"open_interest_contracts\":28910},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":2003490000.0,\"high\":2070612000.0,\"low\":1977048000.0,\"close\":2034000000,\"open_interest_usd\":2034000000,\"open_interest_contracts\":29320},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":2044860000.0,\"high\":2113368000.0,\"low\":2017872000.0,\"close\":2076000000,\"open_interest_usd\":2076000000,\"open_interest_contracts\":29730},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"open\":2086230000.0,\"high\":2156124000.0,\"low\":2058696000.0,\"close\":2118000000,\"open_interest_usd\":2118000000,\"open_interest_contracts\":30140}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 60,
+    "priority": "P1",
+    "family": "DERIVATIVES_RISK",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

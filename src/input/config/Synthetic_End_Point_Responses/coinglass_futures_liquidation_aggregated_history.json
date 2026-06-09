@@ -1,0 +1,80 @@
+{
+  "endpoint_id": "coinglass_futures_liquidation_aggregated_history",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "LIQUIDATION_RISK",
+  "source_category": "liquidation",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/aggregated-history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange_list": "Binance",
+    "symbol": "BTC",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "long_liquidations_usd": 1600000,
+        "short_liquidations_usd": 1100000,
+        "total_liquidations_usd": 2700000
+      },
+      {
+        "time": 1780995351000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "long_liquidations_usd": 1820000,
+        "short_liquidations_usd": 1270000,
+        "total_liquidations_usd": 3090000
+      },
+      {
+        "time": 1780998951000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "long_liquidations_usd": 2040000,
+        "short_liquidations_usd": 1440000,
+        "total_liquidations_usd": 3480000
+      },
+      {
+        "time": 1781002551000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "long_liquidations_usd": 2260000,
+        "short_liquidations_usd": 1610000,
+        "total_liquidations_usd": 3870000
+      },
+      {
+        "time": 1781006151000,
+        "exchange_list": "Binance",
+        "symbol": "BTC",
+        "long_liquidations_usd": 2480000,
+        "short_liquidations_usd": 1780000,
+        "total_liquidations_usd": 4260000
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"long_liquidations_usd\":1600000,\"short_liquidations_usd\":1100000,\"total_liquidations_usd\":2700000},{\"time\":1780995351000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"long_liquidations_usd\":1820000,\"short_liquidations_usd\":1270000,\"total_liquidations_usd\":3090000},{\"time\":1780998951000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"long_liquidations_usd\":2040000,\"short_liquidations_usd\":1440000,\"total_liquidations_usd\":3480000},{\"time\":1781002551000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"long_liquidations_usd\":2260000,\"short_liquidations_usd\":1610000,\"total_liquidations_usd\":3870000},{\"time\":1781006151000,\"exchange_list\":\"Binance\",\"symbol\":\"BTC\",\"long_liquidations_usd\":2480000,\"short_liquidations_usd\":1780000,\"total_liquidations_usd\":4260000}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 30,
+    "priority": "P2",
+    "family": "LIQUIDATION_RISK",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

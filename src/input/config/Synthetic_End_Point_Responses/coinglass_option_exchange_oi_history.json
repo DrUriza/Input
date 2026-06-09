@@ -1,0 +1,90 @@
+{
+  "endpoint_id": "coinglass_option_exchange_oi_history",
+  "provider": "coinglass",
+  "priority": "P3",
+  "family": "OPTIONS_CONTEXT",
+  "source_category": "options",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/option/exchange-oi-history",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "symbol": "BTC",
+    "unit": "USD",
+    "range": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Deribit",
+        "symbol": "BTC",
+        "unit": "USD",
+        "call_open_interest_usd": 950000000,
+        "put_open_interest_usd": 820000000,
+        "total_open_interest_usd": 1770000000,
+        "put_call_ratio": 0.86
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTC",
+        "unit": "USD",
+        "call_open_interest_usd": 975000000,
+        "put_open_interest_usd": 840000000,
+        "total_open_interest_usd": 1815000000,
+        "put_call_ratio": 0.875
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "OKX",
+        "symbol": "BTC",
+        "unit": "USD",
+        "call_open_interest_usd": 1000000000,
+        "put_open_interest_usd": 860000000,
+        "total_open_interest_usd": 1860000000,
+        "put_call_ratio": 0.89
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Bybit",
+        "symbol": "BTC",
+        "unit": "USD",
+        "call_open_interest_usd": 1025000000,
+        "put_open_interest_usd": 880000000,
+        "total_open_interest_usd": 1905000000,
+        "put_call_ratio": 0.905
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Deribit",
+        "symbol": "BTC",
+        "unit": "USD",
+        "call_open_interest_usd": 1050000000,
+        "put_open_interest_usd": 900000000,
+        "total_open_interest_usd": 1950000000,
+        "put_call_ratio": 0.92
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Deribit\",\"symbol\":\"BTC\",\"unit\":\"USD\",\"call_open_interest_usd\":950000000,\"put_open_interest_usd\":820000000,\"total_open_interest_usd\":1770000000,\"put_call_ratio\":0.86},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTC\",\"unit\":\"USD\",\"call_open_interest_usd\":975000000,\"put_open_interest_usd\":840000000,\"total_open_interest_usd\":1815000000,\"put_call_ratio\":0.875},{\"time\":1780998951000,\"exchange\":\"OKX\",\"symbol\":\"BTC\",\"unit\":\"USD\",\"call_open_interest_usd\":1000000000,\"put_open_interest_usd\":860000000,\"total_open_interest_usd\":1860000000,\"put_call_ratio\":0.89},{\"time\":1781002551000,\"exchange\":\"Bybit\",\"symbol\":\"BTC\",\"unit\":\"USD\",\"call_open_interest_usd\":1025000000,\"put_open_interest_usd\":880000000,\"total_open_interest_usd\":1905000000,\"put_call_ratio\":0.905},{\"time\":1781006151000,\"exchange\":\"Deribit\",\"symbol\":\"BTC\",\"unit\":\"USD\",\"call_open_interest_usd\":1050000000,\"put_open_interest_usd\":900000000,\"total_open_interest_usd\":1950000000,\"put_call_ratio\":0.92}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 3600,
+    "priority": "P3",
+    "family": "OPTIONS_CONTEXT",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}

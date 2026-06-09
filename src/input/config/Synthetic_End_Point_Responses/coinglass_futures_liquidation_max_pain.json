@@ -1,0 +1,90 @@
+{
+  "endpoint_id": "coinglass_futures_liquidation_max_pain",
+  "provider": "coinglass",
+  "priority": "P2",
+  "family": "LIQUIDATION_RISK",
+  "source_category": "liquidation",
+  "output_type": "time_series",
+  "url": "https://open-api-v4.coinglass.com/api/futures/liquidation/max-pain",
+  "method": "GET",
+  "http_status": 200,
+  "ok": true,
+  "params": {
+    "exchange": "Binance",
+    "symbol": "BTCUSDT",
+    "interval": "1h",
+    "limit": 5
+  },
+  "data": {
+    "code": "0",
+    "msg": "success",
+    "data": [
+      {
+        "time": 1780991751000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 67960.0,
+        "long_liquidation_usd": 2300000,
+        "short_liquidation_usd": 1800000,
+        "total_liquidation_usd": 4100000,
+        "pain_score": 0.63
+      },
+      {
+        "time": 1780995351000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 68551.53,
+        "long_liquidation_usd": 2670000,
+        "short_liquidation_usd": 2090000,
+        "total_liquidation_usd": 4760000,
+        "pain_score": 0.675
+      },
+      {
+        "time": 1780998951000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 69077.29,
+        "long_liquidation_usd": 3040000,
+        "short_liquidation_usd": 2380000,
+        "total_liquidation_usd": 5420000,
+        "pain_score": 0.72
+      },
+      {
+        "time": 1781002551000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 69532.0,
+        "long_liquidation_usd": 3410000,
+        "short_liquidation_usd": 2670000,
+        "total_liquidation_usd": 6080000,
+        "pain_score": 0.765
+      },
+      {
+        "time": 1781006151000,
+        "exchange": "Binance",
+        "symbol": "BTCUSDT",
+        "price_level": 69975.67,
+        "long_liquidation_usd": 3780000,
+        "short_liquidation_usd": 2960000,
+        "total_liquidation_usd": 6740000,
+        "pain_score": 0.81
+      }
+    ]
+  },
+  "text": "{\"code\":\"0\",\"msg\":\"success\",\"data\":[{\"time\":1780991751000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":67960.0,\"long_liquidation_usd\":2300000,\"short_liquidation_usd\":1800000,\"total_liquidation_usd\":4100000,\"pain_score\":0.63},{\"time\":1780995351000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":68551.53,\"long_liquidation_usd\":2670000,\"short_liquidation_usd\":2090000,\"total_liquidation_usd\":4760000,\"pain_score\":0.675},{\"time\":1780998951000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":69077.29,\"long_liquidation_usd\":3040000,\"short_liquidation_usd\":2380000,\"total_liquidation_usd\":5420000,\"pain_score\":0.72},{\"time\":1781002551000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":69532.0,\"long_liquidation_usd\":3410000,\"short_liquidation_usd\":2670000,\"total_liquidation_usd\":6080000,\"pain_score\":0.765},{\"time\":1781006151000,\"exchange\":\"Binance\",\"symbol\":\"BTCUSDT\",\"price_level\":69975.67,\"long_liquidation_usd\":3780000,\"short_liquidation_usd\":2960000,\"total_liquidation_usd\":6740000,\"pain_score\":0.81}]}",
+  "metadata": {
+    "attempts": 1,
+    "base_url": "https://open-api-v4.coinglass.com",
+    "ttl_seconds": 300,
+    "priority": "P2",
+    "family": "LIQUIDATION_RISK",
+    "output_type": "time_series",
+    "emulated": true,
+    "emulation_version": "final_67_v1",
+    "emulation_note": "Synthetic success payload shaped from API docs/endpoint family for processing development only."
+  },
+  "provider_code": "0",
+  "provider_message": "success",
+  "has_data": true,
+  "blocked_reason": null
+}
